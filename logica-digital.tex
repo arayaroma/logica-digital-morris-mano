@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{tikz}
+\usepackage{booktabs}
 
 \title{Apuntes de L\'{o}gica Digital}
 \date{2023-05-08}
@@ -114,5 +115,36 @@ Cuando se habla de binario es m\'{a}s deseable expresarlo en t\'{e}rminos de
 n\'{u}meros octales o hexadecimales, porque son m\'{a}s compactos y f\'{a}ciles
 de leer. As\'{i} $(111\,111\,111\,111)_2$ este n\'{u}mero en binario de 12 bits,
 se puede escribir como $(7777)_8$ en octal o $(FFF)_{16}$ en hexadecimal.
+
+\medskip
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+        Decimal & Binary & Octal & Hexadecimal \\
+        (base 10) & (base 2) & (base 8) & (base 16) \\
+        \midrule
+        0 & 0000 & 00 & 0 \\
+        1 & 0001 & 01 & 1 \\
+        2 & 0010 & 02 & 2 \\
+        3 & 0011 & 03 & 3 \\
+        4 & 0100 & 04 & 4 \\
+        5 & 0101 & 05 & 5 \\
+        6 & 0110 & 06 & 6 \\
+        7 & 0111 & 07 & 7 \\
+        8 & 1000 & 10 & 8 \\
+        9 & 1001 & 11 & 9 \\
+        10 & 1010 & 12 & A \\
+        11 & 1011 & 13 & B \\
+        12 & 1100 & 14 & C \\
+        13 & 1101 & 15 & D \\
+        14 & 1110 & 16 & E \\
+        15 & 1111 & 17 & F \\
+        \bottomrule
+    \end{tabular}
+    \caption{Numbers in different bases}
+    \label{tab:numbers}
+\end{table}
 
 \end{document}
