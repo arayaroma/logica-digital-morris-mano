@@ -36,7 +36,7 @@ y verificar su funcionamiento antes de crearlos en hardware.
         \small
         \node (a) at (0,0) {\textbf{Sistema digitales}};
         \node (b) at (0,-1) {\textbf{Manejan cantidades discretas de informaci\'{o}n}};
-        \node (c) at (0,-2) {\textbf{Representadas en forma binario}};
+        \node (c) at (0,-2) {\textbf{Representadas en forma de binario}};
         \draw[->] (a) -- (b);
         \draw[->] (b) -- (c);
     \end{tikzpicture}
@@ -146,5 +146,81 @@ se puede escribir como $(7777)_8$ en octal o $(FFF)_{16}$ en hexadecimal.
     \caption{Numbers in different bases}
     \label{tab:numbers}
 \end{table}
+
+\newpage
+\subsection*{1.5 Complementos}
+
+En las computadoras digitales se usan complementos para simplificar la
+operaci\'{o}n de resta y para efectuar manipulaciones l\'{o}gicas. Existen
+dos tipos de complementos para cada sistema de base $r$: el 
+\textit{complemento a la base} y el \textit{complemento a la base disminuida.}
+El primero se denomina complemento a $r$, mientras que el segundo es el complemento
+a $(r - 1)$. Si se sustiyue el valor de la base $r$ en los nombres obtenemos que los
+dos tipos son el complemento a 2 y el complemento a 1. 
+
+\subsubsection*{1.5.1 Complemento a la base}
+El complemento a $r$ de un n\'{u}mero $N$ de $n$ d\'{i}gitos en base $r$ se define
+como: 
+\begin{center}
+    $r^n - N$, para $N \neq 0$, y 0 para $N = 0$. 
+\end{center}
+Por ejemplo, el complemento a 10 de 1234 es $10^4 - 1234 = 8766$.
+De forma similar, el complemento a dos se forma dejando como están todos los
+ceros menos significativos y el primer uno, y sustituyendo los unos por ceros y
+los ceros por unos en las demás posiciones a la izquierda.
+\begin{center}
+    El complemento a dos de 1101100 es 0010100. \\
+    El complemento a dos de 0110111 es 1001001.
+\end{center}
+
+\subsubsection*{1.5.2 Complemento a la base disminuida}
+De igual manera, dado un n\'{u}mero $N$ en base $r$ que tiene $n$ d\'{i}gitos, el
+complemento a $(r - 1)$ de $N$ se define como:
+\begin{center}
+    $(r^n - 1) - N$.
+\end{center}
+
+Con n\'{u}meros decimales, $r = 10$ y $r - 1 = 9$, as\'{i} el complemento
+a nueve de $N$ es $(10^n - 1) - N$. El $10^n$ representado por $n$ \textit{nueves}.
+Por ejemplo, si $n = 4$, tenemos $10^4 = 10,000$ y $10^4 - 1 = 9999$. El complemento
+a nueve se consigue restando cada d\'{i}gito a nueve. $e.g$:
+\begin{center}
+    Complemento a nueve de 546700 es 999999 - 546700 = 453299. \\
+    Complemento a nueve de 012398 es 999999 - 012398 = 987601. 
+\end{center}
+
+Ahora con n\'{u}meros binarios, $r = 2$ y $r - 1 = 1$, as\'{i} el complemento a uno
+de $N$ es $(2^n - 1) - N$. En este caso $2^n$ se representa con un n\'{u}mero binario
+que consite en un uno seguido de $n$ ceros.
+\begin{center}
+    $n = 4, \quad 2^4 = 10000_2$
+\end{center}
+
+Por otro lado $2^n -1$ es un n\'{u}mero binario representado por $n$ unos.
+\begin{center}
+    $n = 4, \quad 2^4 - 1 = 1111_2$
+\end{center}
+
+El complemento a uno se consigue invirtiendo cada d\'{i}gito. El restar d\'{i}gitos
+binarios a uno podemos tener $1 - 1 = 0$ y $1 - 0 = 1$. Cambiando el bit de 0 a 1 o
+de 1 a 0. $e.g$:
+\begin{center}
+    Complemento a uno de 101101 es 111111 - 101101 = 010010. \\
+    Complemento a uno de 011010 es 111111 - 011010 = 100101.
+\end{center}
+
+El complemento a $(r-1)$ de los números octales y hexadecimales se obtiene
+restando cada dígito a 7 y F, respectivamente.
+
+\subsubsection*{1.5.3 Resta con complementos}
+
+La resta de dos n\'{u}meros de $n$ d\'{i}gitos sin signo, $M - N$, en base $r$ se realiza as\'{i}:
+\begin{enumerate}
+    \item $M + (r^n - N) = M - N + r^n$ 
+    \item Si $M \geq N$, la suma produce acarreo final. Quedando $M - N$. 
+    \item Si $M < N$, la suma no produce acarreo final. Quedando $r^n - (N - M)$.
+\end{enumerate}
+
+\subsection*{1.6 N\'{u}meros binarios con signo}
 
 \end{document}
