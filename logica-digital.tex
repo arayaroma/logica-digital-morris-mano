@@ -143,7 +143,7 @@ se puede escribir como $(7777)_8$ en octal o $(FFF)_{16}$ en hexadecimal.
         15 & 1111 & 17 & F \\
         \bottomrule
     \end{tabular}
-    \caption{Numbers in different bases}
+    \caption{N\'{u}meros en diferentes bases.}
     \label{tab:numbers}
 \end{table}
 
@@ -222,5 +222,205 @@ La resta de dos n\'{u}meros de $n$ d\'{i}gitos sin signo, $M - N$, en base $r$ s
 \end{enumerate}
 
 \subsection*{1.6 N\'{u}meros binarios con signo}
+
+Por limitaciones de hardware, las computadoras deben de representar todo con d\'{i}gitos
+binarios. Por lo tanto, los n\'{u}meros binarios con signo se representan con un bit en la
+posici\'{o}n m\'{a}s significativa que se usa para indicar el signo del n\'{u}mero. la 
+convenci\'{o}n es que el bit sea cero si el n\'{u}mero es positivo y uno si es negativo.
+
+Por ejemplo la cadena de bits 01001 se considera como 9 (binario sin signo) o +9 (binario
+con signo). La cadena de bits 11001 se considera como 25 (binario sin signo) o -9 (binario
+con signo). A esto se le llama \textit{convenci\'{o}n de magnitud con signo}. As\'{i}:
+\begin{center}
+    ($+$ o $-$) $\rightarrow$ (0 o 1)
+\end{center}
+
+\subsection*{1.7 C\'{o}digos binarios}
+
+Existe una analog\'{i}a directa entre:
+\begin{enumerate}
+    \small
+    \item Se\~{n}ales binarias
+    \item Elementos binarios
+    \item D\'{i}gitos binarios
+\end{enumerate}
+
+Los c\'{o}digos binarios solo cambian los s\'{i}mbolos, no el significado de los elementos.
+\begin{center}
+    Un c\'{o}digo binario de $n$ bits, es un grupo de $2^n$ combinaciones de $0's$ y $1's$.
+    
+    \textbf{*} Cada combinaci\'{o}n representa a un elemento del conjunto codificado.    
+\end{center}
+
+Las combinaciones de c\'{o}digos de $n-bits$ se representan as\'{i}:
+\begin{center}
+    $ C_{e} = [0 \quad ... \quad 2^n - 1]$
+\end{center}
+
+El n\'{u}mero m\'{i}nimo para codificar $2^n$ elementos es $n$ bits. No existe un n\'{u}mero 
+m\'{a}ximo.
+
+\subsubsection*{1.7.1 C\'{o}digo BCD}
+El c\'{o}digo BCD $\rightarrow$ \textbf{\textit{Binary-Coded Decimal}} es un c\'{o}digo que
+almacena los d\'{i}gitos decimales representandos de forma de d\'{i}gitos binarios. Las 
+computadoras solo entienden con valores binarios. Es posible crear distintos c\'{o}digos
+binarios para representar $2^n$ combinaciones.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        Decimal & BCD \\
+        \midrule
+        0 & 0000 \\
+        1 & 0001 \\
+        2 & 0010 \\
+        3 & 0011 \\
+        4 & 0100 \\
+        5 & 0101 \\
+        6 & 0110 \\
+        7 & 0111 \\
+        8 & 1000 \\
+        9 & 1001 \\
+        \bottomrule
+    \end{tabular}
+    \caption{C\'{o}digo BCD}
+    \label{tab:code_bcd}
+\end{table}
+
+Las combinaciones $(1010 \rightarrow 1111)$ no se usan y por lo tanto carecen de significado,
+en el c\'{o}digo BCD.
+
+Un ejemplo de c\'{o}digo BCD comparado con binario y decimal:
+\begin{center}
+    $(185)_{10} = (10111001)_{2} = (0001\,1000\,0101)_{BCD}$
+\end{center}
+
+Es importante reiterar que $BCD \neq Binario$, BCD = N\'{u}meros decimales representados
+en forma de bits.
+
+\subsubsection*{1.7.2 Otros c\'{o}digos decimales}
+
+\textbf{(BCD, 2421) $\rightarrow$ (C\'{o}digos ponderados):}
+\medbreak
+
+Asigna cada posici\'{o}n de bit $\leftrightarrow$ Factor de ponderaci\'{on} (peso).
+
+Cada d\'{i}gito pueda evaluarse sumando los pesos de todos los $1's$ de la combinaci\'{o}n
+codificada. Pesos de (BCD): $8, 4, 2, 1$.
+\medbreak
+
+\textbf{(2421, excess-3) $\rightarrow$ (C\'{o}digos autocompletadores):}
+
+Complemento a 9 $\rightarrow$ n\'{u}mero decimal $\rightarrow$ se obtiene intercambiando
+los $0's \rightarrow 1's$ y los $1's \rightarrow 0's$.
+\medbreak
+
+\subsubsection*{1.7.3 C\'{o}digo Gray}
+Normalmente los datos de salida de \textbf{sistemas f\'{i}sicos} producen cantidades
+continuas. Por lo que se ocupa:
+\begin{itemize}
+    \small
+    \item Convertir las cantidades continuas en cantidades discretas.
+    \item Convertir las cantidades discretas en cantidades digitales.
+    \item Conviene usar el c\'{o}digo Gray para este prop\'{o}sito.
+\end{itemize}
+\medbreak
+
+\begin{center}
+    \begin{tikzpicture} 
+        \small
+        \node (a) at (0, 1) {\textbf{Sistema f\'{i}sico}};
+        \node (b) at (0, 0) {\textbf{Datos de salida}};
+        \node (c) at (0, -1) {\textbf{Informaci\'{o}n anal\'{o}gica}};
+        \node (d) at (0, -2) {\textbf{Convertidor anal\'{o}gico-digital}};
+        \node (e) at (0, -3) {\textbf{Formato Digital}};
+        \node (f) at (0, -4) {\textbf{Sistema Digital}};
+
+        \draw[->] (a) -- (b);
+        \draw[->] (b) -- (c);
+        \draw[->] (c) -- (d);
+        \draw[->] (d) -- (e);
+        \draw[->] (e) -- (f);
+    \end{tikzpicture}
+\end{center}
+\medskip
+\normalsize
+
+La ventaja de usar el c\'{o}digo Gray es que la diferencia entre dos n\'{u}meros cualesquiera
+es \'{u}nicamente de 1 bit.
+\begin{center}
+    $(Binario): (0111\,1000)$, $(Gray): (0100\,1100)$
+\end{center}
+
+Una aplicaci\'{o}n del c\'{o}digo Gray es en los datos anal\'{o}gicos se representan
+mediante el cambio continuo en la posici\'{o}n de un eje.
+
+\subsubsection*{1.7.4 C\'{o}digo ASCII}
+El c\'{o}digo ASCII consta de 7-bits para su codificaci\'{o}n, por lo que tiene un conjunto
+de 128 combinaciones distintas. Con $b_1 \rightarrow b_7$ siendo $b_7$ el bit m\'{a}s significativo,
+por ejemplo: letra A: $100\,0001$, (columna 100, fila 0001).
+
+Contiene 94 caracteres imprimibles y 34 caracteres no imprimibles. Estos no imprimibles son 
+caracteres de control.
+\begin{itemize}
+    \item 26 letras min\'{u}sculas y 26 letras may\'{u}sculas. (52)
+    \item 10 d\'{i}gitos decimales. (10)
+    \item 32 caracteres especiales. (32)
+\end{itemize}
+\medbreak
+
+\subsubsection*{1.7.5 Tipos de caracteres de control}
+
+\begin{enumerate}
+    \item \textbf{Creadores de Formato}
+
+    Controlan la forma de imprimir, controles conocidos $\rightarrow$ m\'{a}quinas de escribir.
+    \begin{itemize}
+        \item (BS): Retroceso
+        \item (HT): Tabulador Horizontal
+        \item (CR): Retorno de carro
+    \end{itemize}
+
+    \item \textbf{Separadores de Informaci\'{o}n}
+
+    Separan datos en divisiones como p\'{a}rrafos, l\'{i}neas, p\'{a}ginas, etc.
+    \begin{itemize}
+        \item (RS): Separador de Registros
+        \item (FS): Separador de Archivos
+    \end{itemize}
+
+    \item \textbf{Controladores de Informaci\'{o}n}
+
+    Transmisi\'{o}n de datos entre terminales remotas.
+    \begin{itemize}
+        \item (STX): Inicio de Texto
+        \item (ETX): Fin de Texto
+    \end{itemize}
+
+    Encuadran un mensaje entre l\'{i}neas telef\'{o}nicas.
+\end{enumerate}
+(8 bits) $\rightarrow$ (1 byte) $\rightarrow$ (1 car\'{a}cter ASCII), \\
+Se almacena 1 Byte por car\'{a}cter ASCII.
+
+\subsubsection*{1.7.6 C\'{o}digo para detectar errores}
+
+Para poder detectar errores en la comunicaci\'{o}n de datos, se agrega un bit extra.
+Este bit indica la paridad:
+
+\textbf{(Paridad):} Se refiere a la cantidad de bits 1's en un byte. Si la cantidad de
+bits 1's es par, se le asigna un 0, si es impar, se le asigna un 1. Es m\'{a}s com\'{u}n
+la paridad par.
+
+\begin{verse}
+    El bit de paridad se transmite, \\
+    el receptor verifica la paridad del byte recibido, \\
+    si la paridad es correcta, se asume que no hay error, \\
+    si la paridad es incorrecta, se asume que hay un error.
+\end{verse}
+
+\subsection*{1.8 Almacenamiento Binario y Registros}
+
+
 
 \end{document}
