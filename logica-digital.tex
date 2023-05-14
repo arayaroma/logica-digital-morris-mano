@@ -421,6 +421,93 @@ la paridad par.
 
 \subsection*{1.8 Almacenamiento Binario y Registros}
 
+La informaci\'{o}n binaria $\rightarrow$ debe existir f\'{i}sicamente, \\
+medio de almacenamiento en bits $\rightarrow$ registro, \\
+un registro de $\rightarrow$ $n$ bits.
+\medbreak
 
+El estado de un registro es una tupla de $n$ bits; \\
+el contenido $\rightarrow$ funci\'{o}n, la interpretaci\'{o}n $\rightarrow$ informaci\'{o}n.
+\medbreak
+
+Un registro de 16 bits:
+\begin{center}
+    1100001111001001
+\end{center} 
+
+Un registro puede:
+\begin{itemize}
+    \item \begin{center}
+        \textbf{Almacenar datos} \\
+        elementos discretos de informaci\'{o}n.
+    \end{center}
+    \item \begin{center}
+        \textbf{Almacenar instrucciones} \\
+        misma configuraci\'{o}n de bits, distinta interpretaci\'{o}n.
+    \end{center}
+\end{itemize}
+\medbreak
+
+Manipulaci\'{o}n de variables binarias $\rightarrow$ circuitos l\'{o}gicos digitales.
+\medbreak
+Transferencia de registros $\rightarrow$ operaci\'{o}n b\'{a}sica en sistemas digitales.
+\medbreak
+
+\subsection*{1.9 L\'{o}gica Binaria}
+
+\begin{center}
+    \textbf{Variables} $\rightarrow$ 2 valores discretos, \\
+    \textbf{Operaciones} $\rightarrow$ 3 operaciones l\'{o}gicas.
+\end{center}
+\medbreak
+
+\begin{flushleft}
+    Se habla en t\'{e}rminos de bits, \\
+    en valores de (0's y 1's), \'{a}lgebra booleana.
+\end{flushleft}
+\medbreak
+
+\begin{center}
+    \begin{tikzpicture} 
+        \node (a) at (0, 1) {\textbf{L\'{o}gica binaria}};
+        \node (b) at (-3, 0) {\textbf{Variables binarias}};
+        \node (c) at (3, 0) {\textbf{Operaciones l\'{o}gicas}};
+        \node (d) at (-3, -1) {letras del alfabeto: $A, B, C, x, y, z$};
+        \node (h) at (-3, -2) {posibles valores: $0, 1$};
+        \node (e) at (3, -1) {(AND): $z = xy$};
+        \node (f) at (3, -2) {(OR): $z = x + y$};
+        \node (g) at (3, -3) {(NOT): $z = \overline{x}$};
+
+        \draw[->] (a) -- (b);
+        \draw[->] (a) -- (c);
+
+        \draw[->] (b) -- (d);
+        \draw[->] (d) -- (h);
+
+        \draw[->] (c) -- (e);
+        \draw[->] (e) -- (f);
+        \draw[->] (f) -- (g);
+    \end{tikzpicture}
+\end{center}
+
+\subsubsection*{1.9.1 Distintas interpretaciones}
+\begin{flushleft}
+    aritm\'{e}tica binaria: \\
+    \begin{center}
+        $1 + 1 = 10$
+    \end{center}
+
+    l\'{o}gica binaria: \\
+    \begin{center}
+        $1 + 1 = 1$
+    \end{center}
+\end{flushleft}
+
+\subsubsection*{1.9.2 Compuertas l\'{o}gicas}
+Son dispositivos que operan 1 o m\'{a}s entradas binarias para producir una salida binaria.
+
+\begin{center}
+    (AND), (OR), (NOT)
+\end{center}
 
 \end{document}
