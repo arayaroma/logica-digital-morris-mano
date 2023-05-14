@@ -1,7 +1,7 @@
-PWD /home/araya/Documents/Repositories/logica-digital-morris-mano
+PWD /home/araya/Repositories/logica-digital-morris-mano
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/araya/Documents/Repositories/logica-digital-morris-mano/logica-digital.tex
+INPUT /home/araya/Repositories/logica-digital-morris-mano/logica-digital.tex
 OUTPUT logica-digital.log
 INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texmf-dist/tex/latex/base/article.cls
