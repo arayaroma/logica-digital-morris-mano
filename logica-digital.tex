@@ -510,4 +510,104 @@ Son dispositivos que operan 1 o m\'{a}s entradas binarias para producir una sali
     (AND), (OR), (NOT)
 \end{center}
 
+\newpage
+\section*{2. \'{A}lgebra booleana y compuertas l\'{o}gicas}
+\paragraph*{}
+\normalsize
+
+\subsection*{2.1 Definiciones b\'{a}sicas}
+En el \'{a}lgebra booleana, al igual que en todos los sitemas matem\'{a}ticos deductivos,
+se define con un conjunto de elementos, un conjunto de operadores y varios axiomas.
+Un conjunto de elementos es cualquier colecci\'{o}n de objetos con alguna propiedad en 
+com\'{u}n. 
+
+\subsubsection*{2.1.1 Conjunto de elementos}
+Si $S$ es un conjunto y $x$ y $y$ son ciertos objetos, entonces $x \in S$, se denota que
+$x$ es un miembro del conjunto $S$, $S$, y $y \notin S$, denota que $y$ no es un miembro
+del conjunto $S$. $A = \{1, 2, 3, 4\}$, denota que estos elementos son miembros del conjunto
+$A$. 
+
+\subsubsection*{2.1.2 Conjunto de operadores}
+Un operador binario definido sobre un conjunto $S$ de elementos es una regla que asigna a
+cada par de elementos de $S$ un elemento \'{u}nico de $S$. Por ejemplo, $a * b = c$.
+Se designa $*$ como operador binario si especifica una regla para encontrar $c$ a partir
+del par $(a, b)$ y adem\'{a}s si $a, b, c \in S$. Por contraparte no se designa operador
+binario si se descubre que $a, b \in S$, pero $c \notin S$.
+
+\subsubsection*{2.1.3 Conjunto de axiomas}
+\begin{enumerate}
+    \item \textbf{Cerradura}. Un conjunto $S$ es cerrado respecto a un operador binario si, por
+    cada par de elementos de $S$, el operador especifica una regla para obtener un elemento
+    \'{u}nico de $S$. Por ejemplo, el conjunto de n\'{u}meros naturales $N = \{1, 2, 3,... \}$
+    el operador binario m\'{a}s $(+)$. Pero no es cerrado respecto al operador binario menos
+    $(-)$, por las reglas de la resta aritm\'{e}tica. 
+
+    \item \textbf{Ley asociativa}. Se dice que un operador binario $*$ sobre un conjunto $S$ es
+    asociativo si:
+    \begin{center}
+        $(x * y) * z = x * (y * z)$ para todos $x, y, z \in S$
+    \end{center}
+
+    \item \textbf{Ley conmutativa}. Se dice que un operador binario $*$ sobre un conjunto $S$ es
+    conmutativo si
+    \begin{center}
+        $x * y = y * x$ para todos $x, y \in S$
+    \end{center}
+
+    \item \textbf{Elemento identidad}. Se dice que un conjunto $S$ tiene un elemento de identidad
+    respecto a una operaci\'{o}n binaria $*$ sobre $S$ si existe un elemento $e \in S$ con la propiedad
+    \begin{center}
+        $e * x = x * e = x$ para todos $x \in S$
+    \end{center} 
+
+    \item \textbf{Inverso}. Se dice que un conjunto $S$, que tiene el elemento de identidad $e$ respecto a
+    un operador $*$, tiene un inverso si, para todo $x \in S$, existe un elemento $y \in S$ tal que
+    \begin{center}
+        $x * y = e$
+    \end{center}
+
+    \item \textbf{Ley distributiva}. Si $*$ y $\cdot$ son dos operadores binarios sobre un conjunto $S$
+    , decimos que $*$ es distributivo sobre $\cdot$ si
+    \begin{center}
+        $x * (y \cdot z) = (x * y) \cdot (x * z)$
+    \end{center}
+\end{enumerate}
+
+\subsection*{2.2 Definici\'{o}n axiom\'{a}tica del \'{a}lgebra booleana}
+En 1854, \textbf{George Boole} introdujo un tratamiento sistem\'{a}tico de la l\'{o}gica. En 1938
+\textbf{C. E. Shannon} introdujo un \'{a}lgebra booleana de dos valores tambi\'{e}n llamada \textbf{\'{a}lgebra
+de conmutaci\'{o}n}.
+
+Este \'{a}lgebra es una estructura algebraica definida por un conjunto de elementos $B$, junto con dos
+operadores binarios, $+$ y $\cdot$, y seis postulados que introdujo \textbf{Huntington}.
+
+\begin{enumerate}
+    \item \textbf{Cerradura} \\
+    Cerradura respecto al operador $+$. \\
+    Cerradura respecto al operador $\cdot$.
+
+    \item \textbf{Elemento identidad} \\
+    Elemento identidad con respecto a $+$, designado por 0: $x + 0 = 0 + x = x$. \\
+    Elemento identidad con respecto a $\cdot$, designado por 1, $x \cdot 1 = 1 \cdot x = x$.
+
+    \item \textbf{Conmutativa} \\
+    Conmutativa respecto a $+$: $x + y = y + x$. \\
+    Conmutativa respecto a $x$: $x \cdot y = y \cdot x$.
+
+    \item \textbf{Distributiva} \\
+    $\cdot$ es distributivo sobre $+$: $x \cdot (y + z) = (x \cdot y) + (x \cdot z)$. \\ 
+    $+$ es distributivo sobre $\cdot$: $x + (y \cdot z) = (x + y) \cdot (x + z)$.  
+
+    \item \textbf{Complemento} \\
+    Para cada elemento $x \in B$, existe un elemento un elemento $x' \in B$, tal que 
+    $x + x' = 1$ y $x \cdot x' = 0$.
+
+    \item \textbf{Dualidad} \\
+    Existen al menos dos elementos $x, y \in B$, tales que $x \neq y$. 
+\end{enumerate}
+
+\subsection*{2.3 Funciones booleanas}
+
+
+
 \end{document}
