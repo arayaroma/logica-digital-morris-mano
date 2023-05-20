@@ -691,6 +691,157 @@ obtenerse un circuito m\'{a}s simple. Las funciones de hasta cinco variables se 
 con el m\'{e}todo del mapa. Se describir\'{a} m\'{a}s adelante.
 
 \subsubsection*{2.3.2 Complemento de una funci\'{o}n}
+El complemento de una funci\'{o}n $F$ es $F'$, se obtiene intercambiando los ceros por unos y unos 
+por ceros en el valor de $F$. Esto se puede deducir algebraicamente usando el teorema de 
+\textbf{DeMorgan}. Adem\'{a}s este se puede extender a tres o m\'{a}s variables. As\'{i}:
+\begin{align*}
+    (A + B + C)' &= (A + x)' \\
+    &= A'x' \\
+    &= A'(B + C)' \\
+    &= A'(B'C') \\
+    &= A'B'C'
+\end{align*}
+\medbreak
+
+El teorema de DeMorgan se puede generalizar de la siguiente manera:
+\begin{center}
+    $(A + B + C + D + ... + F)' = A'B'C'D'...F'$ \\
+    $(ABCD...F)' = A' + B' + C' + D' + ... + F'$
+\end{center}
+
+Otro procedimiento m\'{a}s sencillo para obtener el complemento de una funci\'{o}n consiste
+en obtener el dual de la funci\'{o}n y complementar cada literal. Esto es en consecuencia del
+teorema de DeMorgan. El dual de una funci\'{o}n se obtiene intercambiando los operadores \textbf{AND}
+y \textbf{OR}, y unos y ceros. Ejemplo:
+\begin{flushleft}
+    $F_1 = x'yz' + x'y'z$ \\
+    El dual de $F_1$ es $(x' + y + z')(x' + y' + z)$ \\
+    Complementando cada literal: $(x + y' + z)(x + y + z') = F_1'$ 
+\end{flushleft}
+\newpage
+
+\subsection*{2.4 Formas can\'{o}nicas y est\'{a}ndar}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccccccc}
+        \toprule
+        &  &  & \multicolumn{2}{c}{\textbf{Minit\'{e}rminos}} & \multicolumn{2}{c}{\textbf{Maxit\'{e}rminos}} \\
+        \cmidrule{4-5} \cmidrule{6-7}
+        $x$ & $y$ & $z$ & T\'{e}rminos & Designaci\'{o}n & T\'{e}rminos & Designaci\'{o}n \\
+        \midrule
+        0 & 0 & 0 & $x'y'z'$ & $m_0$ & $x + y + z$ & $M_0$ \\
+        0 & 0 & 1 & $x'y'z$ & $m_1$ & $x + y + z'$ & $M_1$ \\
+        0 & 1 & 0 & $x'yz'$ & $m_2$ & $x + y' + z$ & $M_2$ \\
+        0 & 1 & 1 & $x'yz$ & $m_3$ & $x + y' + z'$ & $M_3$ \\
+        1 & 0 & 0 & $xy'z'$ & $m_4$ & $x' + y + z$ & $M_4$ \\
+        1 & 0 & 1 & $xy'z$ & $m_5$ & $x' + y + z'$ & $M_5$ \\
+        1 & 1 & 0 & $xyz'$ & $m_6$ & $x' + y' + z$ & $M_6$ \\
+        1 & 1 & 1 & $xyz$ & $m_7$ & $x' + y' + z'$ & $M_7$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Minit\'{e}rminos y maxit\'{e}rminos para tres variables binarias} 
+    \label{tab:miniterminos_maxiterminos} 
+\end{table}
+
+Una variable binaria podr\'{i}a aparecer en su forma normal ($x$) o en su forma complementada
+($x'$). Ahora si se considerada dos variables binarias $x$ y $y$ que se combinan con una operaci\'{o}n
+AND. Se pueden obtener cuatro combinaciones posibles: $x'y'$, $x'y$, $xy'$ y $xy$. Cada uno de
+estos cuatro t\'{e}rminos AND es un \textit{minit\'{e}rmino, o producto est\'{a}ndar}. De igual
+manera se puede combinar $n$ variables para formar $2^n$ minit\'{e}rminos. Se enumeran del 0 a $2^n - 1$. 
+Cada minit\'{e}rmino se obtiene de un t\'{e}rmino AND de las n variables, se designa un s\'{i}mbolo $m_j$,
+donde $j$ denota el equivalente decimal del n\'{u}mero binario que representa el minit\'{e}rmino.
+
+Asimismo, $n$ variables que forman un t\'{e}rmino OR, llamadas \textit{maxit\'{e}rmino o suma est\'{a}ndar}.
+Cabe decir que cada maxit\'{e}rmino es el complemento de su minit\'{e}rmino correspondiente y viceversa.
+As\'{i}, expresar las combinaciones 001, 100 y 111 como $x'y'z'$, $xy'z'$ y $xyz$, respectivamente. Puesto 
+que cada uno de estos minit\'{e}rminos hace que $f_1 = 1$, se tiene:
+\begin{center}
+    $f_1 = x'y'z + xy'z' + xyz = m_1 + m_4 + m_7$ 
+\end{center}
+
+\subsubsection*{2.4.1 Forma can\'{o}nica: suma de minit\'{e}rminos}
+\begin{flushleft}
+    Esto ilustra una propiedad importante del \'{a}lgebra booleana: cualquier funci\'{o}n booleana se puede
+    expresar como \textit{una suma de minit\'{e}rminos}. Ahora podemos hacer lo mismo pero con maxit\'{e}rminos,
+    de modo qu\'{e} el complemento de $f_2$ se lee:
+\end{flushleft}
+\begin{center}
+    $f_2' = x'y'z' +x'yz' + x'yz + xy'z + xyz'$    
+\end{center}
+
+Ejemplo de suma de minit\'{e}rminos:
+\begin{flushleft}
+    Expresar la funci\'{o}n booleana $F = A + B'C$ como la suma de minit\'{e}rminos. Por lo tanto:
+    \begin{center}
+        $A = A(B + B') = AB + AB'$
+    \end{center}
+    A\'{u}n le falta una variable:
+    \begin{align*}
+        A &= AB(C + C') + AB'(C + C') \\
+        &= ABC + ABC' + AB'C + AB'C' \\
+    \end{align*}
+    Al segundo t\'{e}rmino, B'C , le falta una variable:
+    \begin{center}
+        $B'C = B'C(A + A') = AB'C + A'B'C$
+    \end{center}
+    Al combinar todo se tiene:
+    \begin{align*}
+        F &= A + B'C \\
+        &= ABC + ABC' + AB'C + AB'C' + AB'C + A'B'C \\
+    \end{align*}
+    Como AB'C aparece dos veces, se puede simplificar:
+    \begin{align*}
+        F &= ABC + ABC' + AB'C + AB'C' + A'B'C \\
+        &= A'B'C + AB'C' + AB'C + ABC' + ABC \\ 
+        &= m_1 + m_4 + m_5 + m_6 + m_7
+    \end{align*}
+\end{flushleft}
+
+En ocasiones conviene expresar la funci\'{o}n booleana, de la siguiente notaci\'{o}n:
+\begin{center}
+    $F(A, B, C) = \sum(1, 4, 5, 6, 7)$
+\end{center}
+
+\subsubsection*{2.4.2 Forma can\'{o}nica: producto de maxit\'{e}rminos}
+\begin{flushleft}
+    Si obtenemos el complemento de $f_2'$, se obtiene $f_2$:
+\end{flushleft}
+\begin{align*}
+    f_2 &= (x + y + z)(x + y' + z)(x + y' + z')(x' + y + z')(x' + y' + z) \\
+    &= M_0 \cdot M_2 \cdot M_3 \cdot M_5 \cdot M_6
+\end{align*}
+
+Este ejemplo ilusta la segunda propiedad del \'{a}lgebra booleana, cualquier funci\'{o}n booleana se puede
+expresar como un \textit{producto de maxit\'{e}rminos}. Se dice que las funciones booleanas 
+expresadas como suma de minit\'{e}rminos o producto de maxit\'{e}rminos est\'{a}n en \textbf{forma can\'{o}nica}.
+\medbreak
+
+Ejemplo de producto de maxit\'{e}rminos:
+\begin{flushleft}
+    Expresar la funci\'{o}n booleana $F = xy + x'z$ en forma de producto de maxit\'{e}rminos. Por lo tanto:
+    \begin{align*}
+        F &= xy + x'z = (xy + x')(xy + z) \\
+        &= (x + x')(y + x')(x + z)(y + z) \\
+        &= (x' + y)(x + z)(y + z)
+    \end{align*}
+    La funci\'{o}n tiene tres variables, $x$, $y$ y $z$. A cada t\'{e}rmino OR le falta una variable; por tanto:
+    \begin{center}
+        $x' + y = x' + y + zz' = (x' + y + z)(x' + y + z')$ \\
+        $x + z = x + z + yy' = (x + y + z)(x + y' + z)$ \\
+        $y + z = y + z + xx' = (x + y + z)(x' + y + z)$
+    \end{center}
+    Despu\'{e}s de combinar todos los t\'{e}rminos y eliminar los que se repiten; se tiene:
+    \begin{align*}
+        F &= (x + y + z)(x + y' + z)(x' + y + z)(x' + y + z') \\
+        &= M_0 \cdot M_2 \cdot M_4 \cdot M_5
+    \end{align*}
+    Una forma c\'{o}moda de expresar esta funci\'{o}n es:
+    \begin{center}
+        $F(x, y, z) = \prod(0, 2, 4, 5)$
+    \end{center}
+\end{flushleft}
+
+\subsection*{2.5 Conversi\'{o}n entre formas can\'{o}nicas}
 
 
 \end{document}
