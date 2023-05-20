@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage{tikz}
+\usepackage{circuitikz}
 \usepackage{booktabs}
+\usepackage{amsmath}
 
 \title{Apuntes de L\'{o}gica Digital}
 \date{2023-05-08}
@@ -606,8 +608,89 @@ operadores binarios, $+$ y $\cdot$, y seis postulados que introdujo \textbf{Hunt
     Existen al menos dos elementos $x, y \in B$, tales que $x \neq y$. 
 \end{enumerate}
 
+\newpage
 \subsection*{2.3 Funciones booleanas}
+El \'{a}lgebra booleana se ocupa de variables binarias y operaciones l\'{o}gicas. Una
+funci\'{o}n booleana, es descrita por una expresi\'{o}n algebraica que consta de variables
+binarias, contantes 0 y 1, y s\'{i}mbolos l\'{o}gicos de operaci\'{o}n. Por ejemplo:
+\begin{center}
+    $F_1 = x + y'z$
+\end{center}
 
+La funci\'{o}n $F_1$ es igual a 1 si $x$ es igual a 1 o si tanto $y'$ como z son iguales a 1.
+En los dem\'{a}s casos, $F_1$ es igual a 0.
+
+Se puede representar una funci\'{o}n booleana en una \textbf{tabla de verdad}. Una tabla de verdad
+es una lista de \textit{combinaciones} de unos y ceros asignados a las variables binarias y una
+columna que muestra el valor de la funci\'{o}n para cada combinaci\'{o}n. El n\'{u}mero de filas
+de la tabla es de $2^n$, donde $n$ es el n\'{u}mero de variables de la funci\'{o}n. Contando de
+0 hasta $2^n - 1$.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|c}
+        \toprule
+        $x$ & $y$ & $z$ & $F_1$ \\
+        \midrule
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 1 \\
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 1 & 0 \\
+        1 & 0 & 0 & 1 \\
+        1 & 0 & 1 & 1 \\
+        1 & 1 & 0 & 1 \\
+        1 & 1 & 1 & 1 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de $F_1 = x + y'z$}
+    \label{tab:truth_table}
+\end{table}
+\medbreak
+
+\begin{figure}[!ht]
+    \centering
+    \begin{circuitikz}
+        \draw (10, 1) node[american or port, scale=0.8] (or) {};
+        \draw (0, 1.15) node[left] {$x$} -- (or.in 1);
+        \draw (or.out) -- (10.5, 1) node[right] {$F_1$};
+        
+        \draw (7, -0.5) node[american and port, scale=0.8] (and) {};
+        \draw (7, -0.5) node[right] {} -| ++(1, 1) |- (or.in 2);
+        \draw (0, -0.76) node[left] {$z$} -- (and.in 2);
+        
+        \draw (4, -0.29) node[american not port, scale=0.4] (not) {};
+        \draw (4.2, -0.29) node[right] {} -- (and.in 1);
+        \draw (0, -0.29) node[left] {$y$} -- (not.in);
+    \end{circuitikz}
+    \caption{Circuito l\'{o}gico de $F_1 = x + y'z$}
+\end{figure}
+\medbreak
+
+Una funci\'{o}n booleana se puede transformar de una expresi\'{o}n algebraica a un diagrama
+de circuitos hecho con compuertas l\'{o}gicas. Solo hay una forma de representar una funci\'{o}n
+booleana en una tabla de verdad. Sin embargo, la funci\'{o}n en forma algebraica, puede expresarse
+de varias maneras. Manipulando una expresi\'{o}n booleana se puede obtener una expresi\'{o}n m\'{a}s
+simple de la misma funci\'{o}n y as\'{i} reducir el n\'{u}mero de compuertas l\'{o}gicas del circuito.
+
+\newpage
+Consideremos ahora esta funci\'{o}n booleana y su posible simplificaci\'{o}n:
+\begin{align*}
+    F_2 &= x'y'z + x'yz + xy' + xy' \\
+    &= x'z(y' + y) \\
+    &= x'z + xy'
+\end{align*}
+
+La funci\'{o}n de tres terminos y ocho literales se reduce a \'{u}nicamente dos t\'{e}rminos 
+y cuatro literales. Ambas realizan la misma funci\'{o}n, pero es preferible la forma simplificada
+porque requiere menos compuertas l\'{o}gicas.
+
+\subsubsection*{2.3.1 Manipulaci\'{o}n algebraica}
+Se define una literal como una sola variable dentro de un t\'{e}rmino. Si se reduce el n\'{u}mero
+de t\'{e}rminos, el n\'{u}mero de literales, o ambas, en una expresi\'{o}n booleana, podr\'{i}a 
+obtenerse un circuito m\'{a}s simple. Las funciones de hasta cinco variables se pueden simplificar
+con el m\'{e}todo del mapa. Se describir\'{a} m\'{a}s adelante.
+
+\subsubsection*{2.3.2 Complemento de una funci\'{o}n}
 
 
 \end{document}
