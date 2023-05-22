@@ -936,5 +936,62 @@ Hay $2^2n$ funciones para n variables binarias, en el caso de dos variables $n =
         \bottomrule
     \end{tabular}
 \end{table}
+\newpage
+
+\subsection*{2.8 Circuitos integrados}
+Un circuito integrado (CI) es un cristal semiconductor de silicio. llamado \textit{chip},
+que contiene componentes electr\'{o}nicos para construir compuertas digitales. Las diversas
+compuertas se interconectan dentro del chip para crear el circuito requerido.
+
+\subsubsection*{2.8.1 Niveles de integraci\'{o}n}
+Los CI digitales se clasifican seg\'{u}n la complejidad de sus circuitos, la cual se mide por
+el n\'{u}mero de compuertas que contiene. Los CI se clasifican en cuatro categor\'{i}as:
+
+\begin{enumerate}
+    \item \textbf{SSI} (small-scale integration). Contiene hasta diez compuertas.
+    \item \textbf{MSI} (medium-scale integration). Contiene ente diez y mil compuertas.
+    \item \textbf{LSI} (large-scale integration). Contiene miles de compuertas.
+    \item \textbf{VLSI} (very large-scale integration). Contiene cientos de miles de compuertas.
+\end{enumerate}
+
+\subsubsection*{2.8.2 Familias de l\'{o}gica digital}
+Los CI tambi\'{e}n se clasifican por su funcionamiento l\'{o}gico. El circuito b\'{a}sico en
+cada tecnolog\'{i}a es una compuerta NAND, NOR o inversor. Las familias de l\'{o}gica digital
+m\'{a}s populares son:
+
+\begin{itemize}
+    \item \textbf{TTL} l\'{o}gica transistor-transistor.
+    \item \textbf{ECL} l\'{o}gica acoplada por emisor.
+    \item \textbf{MOS} metal-\'{o}xido-semiconductor.
+    \item \textbf{CMOS} metal-\'{o}xido-semiconductor complementario.
+\end{itemize}
+
+TTL ha estado en operaci\'{o}n por mucho tiempo y se le considera \textbf{est\'{a}ndar}. ECL resulta
+ventajoso en sistemas que deben operar a \textbf{alta velocidad}. MOS es apropiado para circuitos que
+requieren una \textbf{densidad elevadad de componentes} y CMOS es preferible en sistemas que
+requieren \textbf{bajo consumo de energ\'{i}a}. \textbf{CMOS} se ha convertido en la familia l\'{o}gica
+dominante, mientras que TTL y ECL ha deca\'{i}do.
+
+\subsubsection*{2.8.3 Dise\~{n}o asistido por computadora (CAD)}
+El dise\~{n}o de sistemas digitales con circuitos VLSI contienen millones de transistores. En general
+es imposible desarrollar y verificar sistemas tan complejos sin la ayuda de herramientas computarizadas.
+Estas herramientas (CAD) consisten en programas de software que ayudan a desarrollar hardware digital 
+automatizando el proceso de dise\~{n}o. El dise\~{n}ador cuenta con diversas opciones para crear la 
+implementaci\'{o}n f\'{i}sica de un circuito digital en silicio. Por ejemplo:
+
+\begin{itemize}
+    \item (\textbf{ASIC}, application-specific integrated circuit): circuito integrado para una aplicaci\'{o}n espec\'{i}fica.
+    \item (\textbf{FPGA}, field-programmable gate array): arreglo de compuertas programable en campo.
+    \item (\textbf{PLD}, programmable logic device): un dispositivo de l\'{o}gica programable.
+\end{itemize}
+
+Un adelanto importante en el dise\~{n}o de sistemas digitales es el uso de un lenguaje de descripci\'{o}n
+de hardware (HDL). Este representa diagramas de l\'{o}gica y otra informaci\'{o}n en forma textual. Sirve
+para simular un sistema antes de construirlo, a fin de verificar la funcionalidad y la operaci\'{o}n.
+\newpage
+
+\section*{3. Minimizaci\'{o}n en el nivel de compuertas}
+\subsection*{3.1 El m\'{e}todo del mapa}
+
 
 \end{document}
