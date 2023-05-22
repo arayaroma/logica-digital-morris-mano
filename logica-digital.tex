@@ -751,7 +751,7 @@ manera se puede combinar $n$ variables para formar $2^n$ minit\'{e}rminos. Se en
 Cada minit\'{e}rmino se obtiene de un t\'{e}rmino AND de las n variables, se designa un s\'{i}mbolo $m_j$,
 donde $j$ denota el equivalente decimal del n\'{u}mero binario que representa el minit\'{e}rmino.
 
-Asimismo, $n$ variables que forman un t\'{e}rmino OR, llamadas \textit{maxit\'{e}rmino o suma est\'{a}ndar}.
+Asimismo, $n$ variables que forman un t\'{e}rmino OR, llamado \textit{maxit\'{e}rmino o suma est\'{a}ndar}.
 Cabe decir que cada maxit\'{e}rmino es el complemento de su minit\'{e}rmino correspondiente y viceversa.
 As\'{i}, expresar las combinaciones 001, 100 y 111 como $x'y'z'$, $xy'z'$ y $xyz$, respectivamente. Puesto 
 que cada uno de estos minit\'{e}rminos hace que $f_1 = 1$, se tiene:
@@ -842,6 +842,99 @@ Ejemplo de producto de maxit\'{e}rminos:
 \end{flushleft}
 
 \subsection*{2.5 Conversi\'{o}n entre formas can\'{o}nicas}
+El complemento de una funci\'{o}n expresado como la suma de minit\'{e}rminos es igual a la suma
+de los minit\'{e}minos que faltan en la funci\'{o}n original. Por ejemplo:
 
+\begin{center}
+    $F(A, B, C) = \sum(1, 4, 5, 6, 7)$
+\end{center}
+\begin{flushleft}
+    Su complemento se expresa como
+\end{flushleft}
+\begin{center}
+    $F'(A, B, C) = \sum(0, 2, 3) = m_0 + m_2 + m_3$
+\end{center}
+
+\begin{flushleft}
+    Ahora si determinamos el complemento de $F'$, se obtiene $F$:
+\end{flushleft}
+\begin{center}
+    $F = (m_0 + m_2 + m_3)' = m_0' \cdot m_2' \cdot m_3' = M_0M_2M_3 = \prod(0, 2, 3)$
+\end{center}
+
+Por lo que se puede ver la relaci\'{o}n entre minit\'{e}rminos y maxim\'{i}nimos:
+\begin{center}
+    $m_j' = M_j$
+\end{center}
+Th
+
+Este ejemplo ilustra la conversi\'{o}n de una funci\'{o}n expresada como la suma de minit\'{e}rminos
+y su equivalente como el producto de maxit\'{e}rminos.
+
+Si tenemos:
+\begin{center}
+    $F = xy + x'z$
+\end{center}
+
+\begin{flushleft}
+    La suma de minit\'{e}rminos:
+\end{flushleft}
+\begin{center}
+    $F(x, y, z) = \sum(1, 3, 6, 7)$
+\end{center}
+\begin{flushleft}
+    El producto de maxit\'{e}rminos:
+\end{flushleft}
+\begin{center}
+    $F(x, y, z) = \prod(0, 2, 4, 5)$
+\end{center}
+\newpage
+
+\subsection*{2.6 Formas est\'{a}ndar}
+Las formas can\'{o}nicas son formas b\'{a}sicas al leer una funci\'{o}n de su tabla de verdad,
+pero casi nunca son las que tienen el n\'{u}mero m\'{i}nimo de literales, porque cada minit\'{e}rmino
+o maxit\'{e}rmino debe contener, por definici\'{o}n, todas las variables, complementadas o sin complementar.
+
+Otra manera de expresar las funciones booleanas es en forma est\'{a}ndar. Existen dos tipos de forma est\'{a}ndar:
+\textit{la suma de productos y el producto de sumas}. La suma de productos contiene t\'{e}rminos AND, llamados
+\textit{t\'{e}rminos de producto}, ejemplo:
+\begin{center}
+    $F_1 = y' + xy + x'yz'$
+\end{center}
+Por lo consecuente se puede crear un circuito con una implementaci\'{o}n de dos niveles. El producto de sumas contiene
+t\'{e}rminos OR, llamados \textit{t\'{e}rminos de suma}, ejemplo:
+\begin{center}
+    $F_2 = x(y' + z)(x' + y + z)$
+\end{center}
+El tipo est\'{a}ndar produce una estructura de compuertas de dos niveles.
+
+\subsection*{2.7 Otras operaciones l\'{o}gicas}
+Hay $2^2n$ funciones para n variables binarias, en el caso de dos variables $n = 2$, existe 16 posibles funciones booleanas.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+        Funciones booleanas & S\'{i}mbolo operador & Nombre & Comentarios \\ 
+        \midrule
+        $F_0 = 0$ & & Nula & Constante binaria 0 \\
+        $F_1 = xy$ & $x \cdot y$ & AND &$x$ y $y$ \\ 
+        $F_2 = xy'$ & $x/y$ & Inhibici\'{o}n & x, pero no y \\
+        $F_3 = x$ & & Transferencia & $x$ \\
+        $F_4 = x'y$ & $y/x$ & Inhibici\'{o}n & y, pero no x \\
+        $F_5 = y$ & & Transferencia & $y$ \\
+        $F_6 = xy' + xy$ & $x \oplus y$ & OR exclusivo & $x$ o $y$, pero no ambos \\
+        $F_7 = x + y$ & $x + y$ & OR & $x$ o $y$ \\
+        $F_8 = (x + y)'$ & $x \downarrow y$ & NOR & No OR \\
+        $F_9 = xy + x'y'$ & $(x \oplus y)'$ & Equivalencia & $x$ es igual a $y$ \\
+        $F_{10} = y'$ & $y'$ & Complemento & No $y$ \\
+        $F_{11} = x + y'$ & $x \subset y$ & Implicaci\'{o}n & Si y, entonces x \\
+        $F_{12} = x'$ & $x'$ & Complemento & No $x$ \\
+        $F_{13} = x' + y$ & $x \supset y$ & Implicaci\'{o}n & Si x, entonces y \\
+        $F_{14} = (xy)'$ & $x \cdot y$ & NAND & No AND \\
+        $F_{15} = 1$ & & Identidad & Contante binaria 1 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \end{document}
