@@ -993,5 +993,170 @@ para simular un sistema antes de construirlo, a fin de verificar la funcionalida
 \section*{3. Minimizaci\'{o}n en el nivel de compuertas}
 \subsection*{3.1 El m\'{e}todo del mapa}
 
+La complejidad de las compuertas de l\'{o}gica digital que implementan una funci\'{o}n booleana est\'{a}
+relacionada directamente con la complejidad de la expresi\'{o}n algebraica de la funci\'{o}n. aunque la 
+representaci\'{o}n como una tabla de verdad es \'{u}nica, hay muchas maneras de expresarla algebraicamente.
+
+El m\'{e}todo del mapa ofrece un procedimiento para simplificar funciones booleanas. Se podr\'{i}a considerar
+como una versi\'{o}n pict\'{o}rica de una tabla de verdad. Se conoce como mapa de \textbf{Karnaugh} o mapa K.
+
+Es un diagrama hehco de cuadrados, cada uno representando un minit\'{e}rmino de la funci\'{o}n. Al reconocer
+diversos patrones, el usuario puede deducir expresiones algebraicas alternas para la misma funci\'{o}n y luego
+escoger la m\'{a}s simple. Las expresiones est\'{a}n expresadas en una de las dos formas est\'{a}ndar, suma de
+productos o producto de sumas. Esto produce un diagrama de circuito con el m\'{i}mino de compuertas y el m\'{i}mino
+de entradas a cada compuerta. La expresi\'{o}n m\'{a}s simple no es \'{u}nica.
+
+\subsubsection*{3.1.1 Mapas de dos variables}
+Para un mapa de dos variables, hay cuatro minit\'{e}rminos $m_0, m_1, m_2, m_3$, por tanto el mapa consiste en cuatro 
+cuadrados, uno para cada minit\'{e}rmino. Si se marca los cuadrados cuyos minit\'{e}rminos pertenecen a una funci\'{o}n
+dada, el mapa se convertir\'{a} en otra forma \'{u}til de representar cualquiera de las 16 funciones booleanas de dos
+variables.
+
+\subsubsection*{3.1.2 Mapas de tres variables}
+En un mapa de tres variables hay ocho minit\'{e}rminos para tres variables binarias; por tanto el mapa consta de ocho
+cuadrados. 
+\begin{center}
+    $m_0 = 000, m_1 = 001, m_2 = 011, m_3 = 010$ \\
+    $m_4 = 110, m_5 = 111, m_6 = 101, m_7 = 100$
+\end{center}
+Advertir que los minit\'{e}rminos no est\'{a}n acomodados en sucesi\'{o}n binaria, sino en c\'{o}digo Gray.
+La caracter\'{i}stica es que s\'{o}lo un bit cambia de valor entre dos columnas adyacentes.
+
+El n\'{u}mero de cuadrados adyacentes que es posible combinar \textbf{siempre} debe ser una potencia de 2, como
+1, 2, 4, 8. Al aumentar el n\'{u}mero de cuadrados adyacentes que se combinan, se reduce el n\'{u}mero de literales
+del t\'{e}rmino producto obtenido.
+\begin{itemize}
+    \item Un cuadrado representa un minit\'{e}rmino $\rightarrow$ t\'{e}rmino con tres literales.
+    \item Dos cuadrados adyacentes representan dos minit\'{e}rminos $\rightarrow$ t\'{e}rmino con dos literales. 
+    \item Cuatro cuadrados adyacentes representan cuatro minit\'{e}rminos $\rightarrow$ t\'{e}rmino con un literal.
+    \item Ocho cuadrados adyacentes representan ocho minit\'{e}rminos $\rightarrow$ t\'{e}rmino constante 1.
+\end{itemize}
+
+\subsubsection*{3.1.3 Mapas de cuatro variables}
+El mapa para funciones booleanas de cuatro variables presentan 16 minit\'{e}rminos, por tanto 
+el mapa consta de 16 cuadrados. El t\'{e}rmino correspondiente para cada cuadrado de obtiene de 
+la concatenaci\'{o}n del n\'{u}mero de fila con el n\'{u}mero de la columna. Por ejemplo, 
+los n\'{u}meros de la tercera fila (11) y la segunda columna (01) al concatenarse dan el 
+n\'{u}mero binario 1101, que es equivalente binario al 13 decimal, representando al minit\'{e}rmino $m_{13}$.
+
+Para el proceso de simplificaci\'{o}n podemos tener en cuenta: 
+\begin{itemize}
+    \item Un cuadrado representa un minit\'{e}rmino $\rightarrow$ t\'{e}rmino con cuatro literales.
+    \item Dos cuadrados adyacentes representan dos minit\'{e}rminos $\rightarrow$ t\'{e}rmino con tres literales.
+    \item Cuatro cuadrados adyacentes representan cuatro minit\'{e}rminos $\rightarrow$ t\'{e}rmino con dos literales.
+    \item Ocho cuadrados adyacentes representan ocho minit\'{e}rminos $\rightarrow$ t\'{e}rmino con una literal.
+    \item Dieciseis cuadrados adyacentes representan dieciseis minit\'{e}rminos $\rightarrow$ constante 1.
+\end{itemize}
+
+\subsubsection*{3.1.4 Mapas de cinco variables}
+El uso de mapas de m\'{a}s de cuatro variables no es tan simple. Un mapa de cinco variables ocupa 32 cuadrados, y
+uno de seis variables ocupa 64 cuadrados. Por lo cual se complica progresivamente. La mejor forma de visualizar estos
+mapas es imaginar que los mapas est\'{a}n uno encima del otro. Cualesquier dos curadrados que queden uno encima del otro
+se consideran adyacentes. Una alternativa es utilizar programas de computadora escritos espec\'{i}ficamente para facilitar
+la simplificacion de funciones booleanas de cinco o m\'{a}s variables.
+
+Se puede demostrar que cualesquier $2^k$ cuadrados adyacentes, para $k = (0, 1, 2, ..., n)$, en un mapa de $n$ variables,
+representan un \'{a}rea que produce un t\'{e}rmino de $n - k$ literales, con $n > k$, si $n = k$, el \'{a}rea representa
+una constante 1.
+
+\subsection*{3.2 Implicantes primos}
+Al escoger los cuadrados adyacentes hay que asegurarse de que se cubran todos los minit\'{e}rminos de la funci\'{o}n.
+Evitar cubrir t\'{e}rminos redundantes cuyos t\'{e}rminos ya est\'{a}n cubiertos por otros. Este procedimiento se podr\'{i}a
+hacer de manera sistem\'{a}tica con el t\'{e}rmino de \textbf{implicante primo e implicante primo esencial}.
+
+Un implicante primo es un t\'{e}rmino producto que se obtiene combinando el n\'{u}mero m\'{a}ximo posible de cuadrados
+adyacentes en el mapa. Si un minit\'{e}rmino de un cuadrado est\'{a} cubierto s\'{o}lo por un implicante primo, se dice que
+es un \textbf{implicante primo esencial}.
+
+\subsection*{3.3 Condiciones de indiferencia}
+En la pr\'{a}ctica hay algunas aplicaciones en las que la funci\'{o}n no est\'{a} definida para ciertas combinaciones de las
+variables. Las funciones con salidas no especificadas para ciertas combinaciones de entradas se llaman \textbf{funciones
+incompletamente especificadas}. Conviene usar estas condiciones de indiferencia en el mapa para simplificar a\'{u}n m\'{a}s
+la expresi\'{o}n booleana. Se puede representar de la siguiente manera:
+\begin{center}
+    $F(w, x, y, z) = \sum (1, 3, 7, 11, 15) + d(0, 2, 5)$
+\end{center}
+Estas condiciones de indiferencia se pueden marcar bien con 0 o 1, dependiendo de la aplicaci\'{o}n.
+
+\subsection*{3.4 Funciones NAND y NOR}
+Muchos circuitos digitales digitales se construyen con compuertas NAND y NOR en lugar de compuertas AND y OR.
+Ya que son m\'{a}s f\'{a}ciles de fabricar con componente electr\'{o}nicos.
+Se dice que la compuerta NAND es una compuerta universal porque cualquier sistema digital puede implementarse con ella.
+La compuerta NOR es otra compuerta universal. Se puede demostrar que cualquier funci\'{o}n booleana se puede implementar
+con compuertas NOR.
+
+\subsection*{3.5 Funci\'{o}n XOR}
+La funci\'{o}n OR exclusivo (XOR), denotada por el s\'{i}mbolo $\oplus$, es una operaci\'{o}n l\'{o}gica que efect\'{u}a
+la siguiente operaci\'{o}n:
+\begin{center}
+    $x \oplus y = xy' + x'y$
+\end{center}
+Es igual a 1 si s\'{o}lo $x$ es igual a 1 o s\'{o}lo $y$ es igual a 1, pero no si ambas son 1. El NOR exclusivo, tambi\'{e}n
+llamado equivalencia, realiza la siguiente operaci\'{o}n:
+
+\begin{center}
+    $(x \oplus y)' = xy + x'y'$
+\end{center}
+Es igual a 1 si tanto x como y son 1 o si ambas son 0.
+
+Se cumplen las identidades siguientes para la operaci\'{o}n XOR:
+\begin{center}
+    $x \oplus 0 = x$ \\
+    $x \oplus 1 = x'$ \\
+    $x \oplus x = 0$ \\
+    $x \oplus x' = 1$ \\
+    $x \oplus y' = x' \oplus y = (x \oplus y)' $
+\end{center}
+
+Tambi\'{e}n puede demostrarse que la operaci\'{o}n XOR es tanto conmutativa como asociativa; es decir,
+\begin{center}
+    $x \oplus y = y \oplus x$ \\
+    \begin{flushleft}
+        y
+    \end{flushleft}
+    $x \oplus (y \oplus z) = (x \oplus y) \oplus z$
+\end{center}
+
+\subsubsection*{3.5.1 Funci\'{o}n impar}
+La operaci\'{o}n XOR con tres o m\'{a}s variables se convierte en una funci\'{o}n booleana ordinaria sustituyendo
+el s\'{i}mbolo $\oplus$ por su expresi\'{o}n booleana equivalente. Por ejemplo:
+\begin{align*}
+    A \oplus B \oplus C &= (AB' + A'B)C' + (AB + A'B')C \\
+    &= AB'C' + A'BC' + ABC + A'B'C \\
+    &= \sum (1, 2, 4, 7)
+\end{align*}
+La funci\'{o}n XOR de tres variables es una funci\'{o}n impar, es decir, es igual a 1 si el n\'{u}mero de 1's en la
+funci\'{o}n es impar.
+
+\subsubsection*{3.5.2 Generaci\'{o}n y verificaci\'{o}n de paridad}
+Las funciones XOR son muy \'{u}tiles en los sistemas que requieren c\'{o}digos para detectar y corregir errores. Un bit
+de paridad es un bit adicional que se incluye con el mensaje binario de modo que el n\'{u}mero total de unos se impar o
+par. Se detecta un error si la paridad recibida no corresponde con la transmitida. El transmior usar\'{i}a un \textbf{circuito
+generador de paridad} y el receptor un \textbf{circuito verificador de paridad}.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc}
+        \multicolumn{3}{c}{Mensaje de tres bits} & Bit de Paridad \\
+        \cmidrule{1-3} \cmidrule{4-4}
+        $x$ & $y$ & $z$ & $P$ \\
+        \midrule
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 1 \\
+        0 & 1 & 0 & 1 \\
+        0 & 1 & 1 & 0 \\
+        1 & 0 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 0 \\
+        1 & 1 & 1 & 1 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad para de un generador de paridad par}
+\end{table}
+\newpage
+
+\section*{4. L\'{o}gica Combinacional}
+
+
 
 \end{document}
