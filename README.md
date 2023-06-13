@@ -2,8 +2,8 @@
 Apuntes sobre el libro de Logica Digital de Morris Mano, tercera edicion.
 
 ### Lectura
-Actualmente leyendo el capitulo 5: Logica secuencial sincronica.
+Actualmente leyendo el capitulo 7: Memoria y logica programable
 
 ### Escritura
-Actualmente escribiendo el capitulo 3: Minimizacion en el nivel de compuertas.
+Actualmente escribiendo el capitulo 4: Circuitos Combinacionales
 
