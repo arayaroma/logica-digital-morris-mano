@@ -1,0 +1,351 @@
+
+\newpage
+\section*{2. \'{A}lgebra booleana y compuertas l\'{o}gicas}
+\paragraph*{} \normalsize
+
+\subsection*{2.1 Definiciones b\'{a}sicas} En el \'{a}lgebra booleana, al igual
+que en todos los sitemas matem\'{a}ticos deductivos, se define con un conjunto
+de elementos, un conjunto de operadores y varios axiomas. Un conjunto de
+elementos es cualquier colecci\'{o}n de objetos con alguna propiedad en
+com\'{u}n.
+
+\subsubsection*{2.1.1 Conjunto de elementos} Si $S$ es un conjunto y $x$ y $y$
+son ciertos objetos, entonces $x \in S$, se denota que $x$ es un miembro del
+conjunto $S$, $S$, y $y \notin S$, denota que $y$ no es un miembro del conjunto
+$S$. $A = \{1, 2, 3, 4\}$, denota que estos elementos son miembros del conjunto
+$A$.
+
+\subsubsection*{2.1.2 Conjunto de operadores} Un operador binario definido
+sobre un conjunto $S$ de elementos es una regla que asigna a cada par de
+elementos de $S$ un elemento \'{u}nico de $S$. Por ejemplo, $a * b = c$. Se
+designa $*$ como operador binario si especifica una regla para encontrar $c$ a
+partir del par $(a, b)$ y adem\'{a}s si $a, b, c \in S$. Por contraparte no se
+designa operador binario si se descubre que $a, b \in S$, pero $c \notin S$.
+
+\subsubsection*{2.1.3 Conjunto de axiomas} \begin{enumerate} \item
+          \textbf{Cerradura}. Un conjunto $S$ es cerrado respecto a un operador binario si,
+          por cada par de elementos de $S$, el operador especifica una regla para obtener
+          un elemento \'{u}nico de $S$. Por ejemplo, el conjunto de n\'{u}meros naturales
+          $N = \{1, 2, 3,... \}$ el operador binario m\'{a}s $(+)$. Pero no es cerrado
+          respecto al operador binario menos $(-)$, por las reglas de la resta
+          aritm\'{e}tica.
+
+    \item \textbf{Ley asociativa}. Se dice que un operador binario $*$ sobre un
+          conjunto $S$ es asociativo si: \begin{center} $(x * y) * z = x * (y * z)$ para
+              todos $x, y, z \in S$ \end{center}
+
+    \item \textbf{Ley conmutativa}. Se dice que un operador binario $*$ sobre un
+          conjunto $S$ es conmutativo si \begin{center} $x * y = y * x$ para todos $x, y
+                  \in S$ \end{center}
+
+    \item \textbf{Elemento identidad}. Se dice que un conjunto $S$ tiene un
+          elemento de identidad respecto a una operaci\'{o}n binaria $*$ sobre $S$ si
+          existe un elemento $e \in S$ con la propiedad \begin{center} $e * x = x * e = x$
+              para todos $x \in S$ \end{center}
+
+    \item \textbf{Inverso}. Se dice que un conjunto $S$, que tiene el elemento de
+          identidad $e$ respecto a un operador $*$, tiene un inverso si, para todo $x \in
+              S$, existe un elemento $y \in S$ tal que \begin{center} $x * y = e$ \end{center}
+
+    \item \textbf{Ley distributiva}. Si $*$ y $\cdot$ son dos operadores binarios
+          sobre un conjunto $S$, decimos que $*$ es distributivo sobre $\cdot$ si
+          \begin{center} $x * (y \cdot z) = (x * y) \cdot (x * z)$ \end{center}
+\end{enumerate}
+
+\subsection*{2.2 Definici\'{o}n axiom\'{a}tica del \'{a}lgebra booleana} En
+1854, \textbf{George Boole} introdujo un tratamiento sistem\'{a}tico de la
+l\'{o}gica. En 1938 \textbf{C. E. Shannon} introdujo un \'{a}lgebra booleana de
+dos valores tambi\'{e}n llamada \textbf{\'{a}lgebra de conmutaci\'{o}n}.
+
+Este \'{a}lgebra es una estructura algebraica definida por un conjunto de
+elementos $B$, junto con dos operadores binarios, $+$ y $\cdot$, y seis
+postulados que introdujo \textbf{Huntington}.
+
+\begin{enumerate} \item \textbf{Cerradura} \\ Cerradura respecto al operador
+          $+$. \\ Cerradura respecto al operador $\cdot$.
+
+    \item \textbf{Elemento identidad} \\ Elemento identidad con respecto a $+$,
+          designado por 0: $x + 0 = 0 + x = x$. \\ Elemento identidad con respecto a
+          $\cdot$, designado por 1, $x \cdot 1 = 1 \cdot x = x$.
+
+    \item \textbf{Conmutativa} \\ Conmutativa respecto a $+$: $x + y = y + x$. \\
+          Conmutativa respecto a $x$: $x \cdot y = y \cdot x$.
+
+    \item \textbf{Distributiva} \\ $\cdot$ es distributivo sobre $+$: $x \cdot (y
+              + z) = (x \cdot y) + (x \cdot z)$. \\ $+$ es distributivo sobre $\cdot$: $x + (y
+              \cdot z) = (x + y) \cdot (x + z)$.
+
+    \item \textbf{Complemento} \\ Para cada elemento $x \in B$, existe un elemento
+          un elemento $x' \in B$, tal que $x + x' = 1$ y $x \cdot x' = 0$.
+
+    \item \textbf{Dualidad} \\ Existen al menos dos elementos $x, y \in B$, tales
+          que $x \neq y$. \end{enumerate}
+
+\newpage \subsection*{2.3 Funciones booleanas} El \'{a}lgebra booleana se ocupa
+de variables binarias y operaciones l\'{o}gicas. Una funci\'{o}n booleana, es
+descrita por una expresi\'{o}n algebraica que consta de variables binarias,
+contantes 0 y 1, y s\'{i}mbolos l\'{o}gicos de operaci\'{o}n. Por ejemplo:
+\begin{center} $F_1 = x + y'z$ \end{center}
+
+La funci\'{o}n $F_1$ es igual a 1 si $x$ es igual a 1 o si tanto $y'$ como z
+son iguales a 1. En los dem\'{a}s casos, $F_1$ es igual a 0.
+
+Se puede representar una funci\'{o}n booleana en una \textbf{tabla de verdad}.
+Una tabla de verdad es una lista de \textit{combinaciones} de unos y ceros
+asignados a las variables binarias y una columna que muestra el valor de la
+funci\'{o}n para cada combinaci\'{o}n. El n\'{u}mero de filas de la tabla es de
+$2^n$, donde $n$ es el n\'{u}mero de variables de la funci\'{o}n. Contando de 0
+hasta $2^n - 1$.
+
+\begin{table}[h] \centering \begin{tabular}{ccc|c} \toprule $x$ & $y$ & $z$ &
+               $F_1$                              \\ \midrule 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 1 \\ 0 & 1 & 0 & 0 \\ 0 & 1 & 1 &
+               0                                  \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 1 & 1 & 1 & 1 \\
+               \bottomrule\end{tabular} \caption{Tabla de verdad de $F_1 = x + y'z$}
+    \label{tab:truth_table} \end{table} \medbreak
+
+\begin{figure}[!ht] \centering \begin{circuitikz}
+        \draw (10, 1) node[american or port, scale=0.8] (or) {};
+        \draw (0, 1.15) node[left] {$x$} -- (or.in 1);
+        \draw (or.out) -- (10.5, 1) node[right] {$F_1$};
+        \draw (7, -0.5) node[american and port, scale=0.8] (and) {};
+        \draw (7, -0.5) node[right] {} -| ++(1, 1) |- (or.in 2);
+        \draw (0, -0.76) node[left] {$z$} -- (and.in 2);
+        \draw (4, -0.29) node[american not port, scale=0.4] (not) {};
+        \draw (4.2, -0.29) node[right] {} -- (and.in 1);
+        \draw (0, -0.29) node[left] {$y$} -- (not.in); \end{circuitikz}
+    \caption{Circuito l\'{o}gico de $F_1 = x + y'z$}
+\end{figure}
+\medbreak
+
+Una funci\'{o}n booleana se puede transformar de una expresi\'{o}n algebraica a
+un diagrama de circuitos hecho con compuertas l\'{o}gicas. Solo hay una forma de
+representar una funci\'{o}n booleana en una tabla de verdad. Sin embargo, la
+funci\'{o}n en forma algebraica, puede expresarse de varias maneras. Manipulando
+una expresi\'{o}n booleana se puede obtener una expresi\'{o}n m\'{a}s simple de
+la misma funci\'{o}n y as\'{i} reducir el n\'{u}mero de compuertas l\'{o}gicas
+del circuito.
+
+\newpage Consideremos ahora esta funci\'{o}n booleana y su posible
+simplificaci\'{o}n: \begin{align*} F_2 & = x'y'z + x'yz + xy' + xy' \\ &= x'z(y'
+               + y)                             \\ &= x'z + xy'\end{align*}
+
+La funci\'{o}n de tres terminos y ocho literales se reduce a \'{u}nicamente dos
+t\'{e}rminos y cuatro literales. Ambas realizan la misma funci\'{o}n, pero es
+preferible la forma simplificada porque requiere menos compuertas l\'{o}gicas.
+
+\subsubsection*{2.3.1 Manipulaci\'{o}n algebraica} Se define una literal como
+una sola variable dentro de un t\'{e}rmino. Si se reduce el n\'{u}mero de
+t\'{e}rminos, el n\'{u}mero de literales, o ambas, en una expresi\'{o}n booleana,
+podr\'{i}a obtenerse un circuito m\'{a}s simple. Las funciones de hasta cinco
+variables se pueden simplificar con el m\'{e}todo del mapa. Se describir\'{a}
+m\'{a}s adelante.
+
+\subsubsection*{2.3.2 Complemento de una funci\'{o}n} El complemento de una
+funci\'{o}n $F$ es $F'$, se obtiene intercambiando los ceros por unos y unos por
+ceros en el valor de $F$. Esto se puede deducir algebraicamente usando el
+teorema de \textbf{DeMorgan}. Adem\'{a}s este se puede extender a tres o m\'{a}s
+variables. As\'{i}: \begin{align*} (A + B + C)' & = (A + x)' \\ &= A'x' \\ &=
+               A'(B + C)'                \\ &= A'(B'C') \\ &= A'B'C'\end{align*} \medbreak
+
+El teorema de DeMorgan se puede generalizar de la siguiente manera:
+\begin{center} $(A + B + C + D + ... + F)' = A'B'C'D'...F'$ \\ $(ABCD...F)' = A'
+        + B' + C' + D' + ... + F'$ \end{center}
+
+Otro procedimiento m\'{a}s sencillo para obtener el complemento de una
+funci\'{o}n consiste en obtener el dual de la funci\'{o}n y complementar cada
+literal. Esto es en consecuencia del teorema de DeMorgan. El dual de una
+funci\'{o}n se obtiene intercambiando los operadores \textbf{AND} y \textbf{OR},
+y unos y ceros. Ejemplo: \begin{flushleft} $F_1 = x'yz' + x'y'z$ \\ El dual de
+    $F_1$ es $(x' + y + z')(x' + y' + z)$ \\ Complementando cada literal: $(x + y' +
+        z)(x + y + z') = F_1'$ \end{flushleft} \newpage
+
+\subsection*{2.4 Formas can\'{o}nicas y est\'{a}ndar} \begin{table}[h]
+    \centering \begin{tabular}{ccccccc} \toprule                            &              &               &
+               \multicolumn{2}{c}{\textbf{Minit\'{e}rminos}} &
+               \multicolumn{2}{c}{\textbf{Maxit\'{e}rminos}}                                                                                  \\ \cmidrule{4-5} \cmidrule{6-7}
+               $x$                                           & $y$          & $z$           & T\'{e}rminos & Designaci\'{o}n & T\'{e}rminos &
+               Designaci\'{o}n                                                                                                                \\ \midrule 0 & 0 & 0 & $x'y'z'$ & $m_0$ & $x + y + z$ & $M_0$
+               \\ 0 & 0 & 1 & $x'y'z$ & $m_1$ & $x + y + z'$ & $M_1$ \\ 0 & 1 & 0 & $x'yz'$ &
+               $m_2$                                         & $x + y' + z$ & $M_2$                                                           \\ 0 & 1 & 1 & $x'yz$ & $m_3$ & $x + y' + z'$ &
+               $M_3$                                                                                                                          \\ 1 & 0 & 0 & $xy'z'$ & $m_4$ & $x' + y + z$ & $M_4$ \\ 1 & 0 & 1 &
+               $xy'z$                                        & $m_5$        & $x' + y + z'$ & $M_5$                                           \\ 1 & 1 & 0 & $xyz'$ & $m_6$ & $x' + y'
+               + z$                                          & $M_6$                                                                          \\ 1 & 1 & 1 & $xyz$ & $m_7$ & $x' + y' + z'$ & $M_7$ \\
+               \bottomrule\end{tabular} \caption{Minit\'{e}rminos y maxit\'{e}rminos para tres
+    variables binarias} \label{tab:miniterminos_maxiterminos} \end{table}
+
+Una variable binaria podr\'{i}a aparecer en su forma normal ($x$) o en su forma
+complementada ($x'$). Ahora si se considerada dos variables binarias $x$ y $y$
+que se combinan con una operaci\'{o}n AND. Se pueden obtener cuatro
+combinaciones posibles: $x'y'$, $x'y$, $xy'$ y $xy$. Cada uno de estos cuatro
+t\'{e}rminos AND es un \textit{minit\'{e}rmino, o producto est\'{a}ndar}. De
+igual manera se puede combinar $n$ variables para formar $2^n$ minit\'{e}rminos.
+Se enumeran del 0 a $2^n - 1$. Cada minit\'{e}rmino se obtiene de un t\'{e}rmino
+AND de las n variables, se designa un s\'{i}mbolo $m_j$, donde $j$ denota el
+equivalente decimal del n\'{u}mero binario que representa el minit\'{e}rmino.
+
+Asimismo, $n$ variables que forman un t\'{e}rmino OR, llamado
+\textit{maxit\'{e}rmino o suma est\'{a}ndar}. Cabe decir que cada
+maxit\'{e}rmino es el complemento de su minit\'{e}rmino correspondiente y
+viceversa. As\'{i}, expresar las combinaciones 001, 100 y 111 como $x'y'z'$,
+$xy'z'$ y $xyz$, respectivamente. Puesto que cada uno de estos minit\'{e}rminos
+hace que $f_1 = 1$, se tiene: \begin{center} $f_1 = x'y'z + xy'z' + xyz = m_1 +
+        m_4 + m_7$ \end{center}
+
+\subsubsection*{2.4.1 Forma can\'{o}nica: suma de minit\'{e}rminos}
+\begin{flushleft} Esto ilustra una propiedad importante del \'{a}lgebra booleana:
+    cualquier funci\'{o}n booleana se puede expresar como \textit{una suma de
+    minit\'{e}rminos}. Ahora podemos hacer lo mismo pero con maxit\'{e}rminos, de
+    modo qu\'{e} el complemento de $f_2$ se lee: \end{flushleft} \begin{center}
+    $f_2' = x'y'z' +x'yz' + x'yz + xy'z + xyz'$ \end{center}
+
+Ejemplo de suma de minit\'{e}rminos: \begin{flushleft} Expresar la funci\'{o}n
+    booleana $F = A + B'C$ como la suma de minit\'{e}rminos. Por lo tanto:
+    \begin{center} $A = A(B + B') = AB + AB'$ \end{center} A\'{u}n le falta una
+    variable: \begin{align*} A & = AB(C + C') + AB'(C + C') \\ &= ABC + ABC' + AB'C +
+               AB'C'                          \\\end{align*} Al segundo t\'{e}rmino, B'C , le falta una variable:
+    \begin{center} $B'C = B'C(A + A') = AB'C + A'B'C$ \end{center} Al combinar todo
+    se tiene: \begin{align*} F & = A + B'C \\ &= ABC + ABC' + AB'C + AB'C' + AB'C +
+               A'B'C         \\\end{align*} Como AB'C aparece dos veces, se puede simplificar:
+    \begin{align*} F & = ABC + ABC' + AB'C + AB'C' + A'B'C \\ &= A'B'C + AB'C' + AB'C
+               + ABC' + ABC                            \\ &= m_1 + m_4 + m_5 + m_6 + m_7\end{align*} \end{flushleft}
+
+En ocasiones conviene expresar la funci\'{o}n booleana, de la siguiente
+notaci\'{o}n: \begin{center} $F(A, B, C) = \sum(1, 4, 5, 6, 7)$ \end{center}
+
+\subsubsection*{2.4.2 Forma can\'{o}nica: producto de maxit\'{e}rminos}
+\begin{flushleft} Si obtenemos el complemento de $f_2'$, se obtiene $f_2$:
+\end{flushleft} \begin{align*} f_2 & = (x + y + z)(x + y' + z)(x + y' + z')(x' +
+               y + z')(x' + y' + z)                              \\ &= M_0 \cdot M_2 \cdot M_3 \cdot M_5 \cdot M_6
+\end{align*}
+
+Este ejemplo ilusta la segunda propiedad del \'{a}lgebra booleana, cualquier
+funci\'{o}n booleana se puede expresar como un \textit{producto de
+maxit\'{e}rminos}. Se dice que las funciones booleanas expresadas como suma de
+minit\'{e}rminos o producto de maxit\'{e}rminos est\'{a}n en \textbf{forma
+can\'{o}nica}. \medbreak
+
+Ejemplo de producto de maxit\'{e}rminos: \begin{flushleft} Expresar la
+    funci\'{o}n booleana $F = xy + x'z$ en forma de producto de maxit\'{e}rminos.
+    Por lo tanto: \begin{align*} F & = xy + x'z = (xy + x')(xy + z) \\ &= (x + x')(y
+               + x')(x + z)(y + z)                \\ &= (x' + y)(x + z)(y + z)\end{align*} La funci\'{o}n
+    tiene tres variables, $x$, $y$ y $z$. A cada t\'{e}rmino OR le falta una
+    variable; por tanto: \begin{center} $x' + y = x' + y + zz' = (x' + y + z)(x' + y
+            + z')$ \\ $x + z = x + z + yy' = (x + y + z)(x + y' + z)$ \\ $y + z = y + z +
+            xx' = (x + y + z)(x' + y + z)$ \end{center} Despu\'{e}s de combinar todos los
+    t\'{e}rminos y eliminar los que se repiten; se tiene: \begin{align*} F & = (x + y
+               + z)(x + y' + z)(x' + y + z)(x' + y + z') \\ &= M_0 \cdot M_2 \cdot M_4 \cdot
+               M_5\end{align*} Una forma c\'{o}moda de expresar esta funci\'{o}n es:
+    \begin{center} $F(x, y, z) = \prod(0, 2, 4, 5)$ \end{center} \end{flushleft}
+
+\subsection*{2.5 Conversi\'{o}n entre formas can\'{o}nicas} El complemento de
+una funci\'{o}n expresado como la suma de minit\'{e}rminos es igual a la suma de
+los minit\'{e}minos que faltan en la funci\'{o}n original. Por ejemplo:
+
+\begin{center} $F(A, B, C) = \sum(1, 4, 5, 6, 7)$ \end{center}
+\begin{flushleft} Su complemento se expresa como \end{flushleft} \begin{center}
+    $F'(A, B, C) = \sum(0, 2, 3) = m_0 + m_2 + m_3$ \end{center}
+
+\begin{flushleft} Ahora si determinamos el complemento de $F'$, se obtiene $F$:
+\end{flushleft} \begin{center} $F = (m_0 + m_2 + m_3)' = m_0' \cdot m_2' \cdot
+        m_3' = M_0M_2M_3 = \prod(0, 2, 3)$ \end{center}
+
+Por lo que se puede ver la relaci\'{o}n entre minit\'{e}rminos y
+maxim\'{i}nimos: \begin{center} $m_j' = M_j$ \end{center} Th
+
+Este ejemplo ilustra la conversi\'{o}n de una funci\'{o}n expresada como la
+suma de minit\'{e}rminos y su equivalente como el producto de maxit\'{e}rminos.
+
+Si tenemos: \begin{center} $F = xy + x'z$ \end{center}
+
+\begin{flushleft} La suma de minit\'{e}rminos: \end{flushleft} \begin{center}
+    $F(x, y, z) = \sum(1, 3, 6, 7)$ \end{center} \begin{flushleft} El producto de
+    maxit\'{e}rminos: \end{flushleft} \begin{center} $F(x, y, z) = \prod(0, 2, 4,
+        5)$ \end{center} \newpage
+
+\subsection*{2.6 Formas est\'{a}ndar} Las formas can\'{o}nicas son formas
+b\'{a}sicas al leer una funci\'{o}n de su tabla de verdad, pero casi nunca son
+las que tienen el n\'{u}mero m\'{i}nimo de literales, porque cada
+minit\'{e}rmino o maxit\'{e}rmino debe contener, por definici\'{o}n, todas las
+variables, complementadas o sin complementar.
+
+Otra manera de expresar las funciones booleanas es en forma est\'{a}ndar.
+Existen dos tipos de forma est\'{a}ndar: \textit{la suma de productos y el
+    producto de sumas}. La suma de productos contiene t\'{e}rminos AND, llamados
+\textit{t\'{e}rminos de producto}, ejemplo: \begin{center} $F_1 = y' + xy +
+        x'yz'$ \end{center} Por lo consecuente se puede crear un circuito con una
+implementaci\'{o}n de dos niveles. El producto de sumas contiene t\'{e}rminos OR,
+llamados \textit{t\'{e}rminos de suma}, ejemplo: \begin{center} $F_2 = x(y' +
+        z)(x' + y + z)$ \end{center} El tipo est\'{a}ndar produce una estructura de
+compuertas de dos niveles.
+
+\subsection*{2.7 Otras operaciones l\'{o}gicas} Hay $2^2n$ funciones para n
+variables binarias, en el caso de dos variables $n = 2$, existe 16 posibles
+funciones booleanas.
+
+\begin{table}[h] \centering \begin{tabular}{cccc} \toprule Funciones booleanas
+                      & S\'{i}mbolo operador & Nombre           & Comentarios  \\ \midrule $F_0 = 0$ & & Nula &
+        Constante binaria 0                                                    \\ $F_1 = xy$ & $x \cdot y$ & AND &$x$ y $y$ \\ $F_2 = xy'$
+                      & $x/y$                & Inhibici\'{o}n   & x, pero no y \\ $F_3 = x$ & & Transferencia & $x$ \\
+        $F_4 = x'y$   & $y/x$                & Inhibici\'{o}n   & y, pero no x \\ $F_5 = y$ & &
+        Transferencia & $y$                                                    \\ $F_6 = xy' + xy$ & $x \oplus y$ & OR exclusivo & $x$ o
+        $y$, pero no ambos                                                     \\ $F_7 = x + y$ & $x + y$ & OR & $x$ o $y$ \\ $F_8 = (x +
+        y)'$          & $x \downarrow y$     & NOR              & No OR        \\ $F_9 = xy + x'y'$ & $(x \oplus y)'$ &
+        Equivalencia  & $x$ es igual a $y$                                     \\ $F_{10} = y'$ & $y'$ & Complemento & No $y$
+        \\ $F_{11} = x + y'$ & $x \subset y$ & Implicaci\'{o}n & Si y, entonces x \\
+        $F_{12} = x'$ & $x'$                 & Complemento      & No $x$       \\ $F_{13} = x' + y$ & $x \supset y$
+                      & Implicaci\'{o}n      & Si x, entonces y                \\ $F_{14} = (xy)'$ & $x \cdot y$ & NAND &
+        No AND                                                                 \\ $F_{15} = 1$ & & Identidad & Contante binaria 1 \\ \bottomrule
+    \end{tabular} \end{table} \newpage
+
+\subsection*{2.8 Circuitos integrados} Un circuito integrado (CI) es un cristal
+semiconductor de silicio. llamado \textit{chip}, que contiene componentes
+electr\'{o}nicos para construir compuertas digitales. Las diversas compuertas se
+interconectan dentro del chip para crear el circuito requerido.
+
+\subsubsection*{2.8.1 Niveles de integraci\'{o}n} Los CI digitales se
+clasifican seg\'{u}n la complejidad de sus circuitos, la cual se mide por el
+n\'{u}mero de compuertas que contiene. Los CI se clasifican en cuatro
+categor\'{i}as:
+
+\begin{enumerate} \item \textbf{SSI} (small-scale integration). Contiene hasta
+          diez compuertas. \item \textbf{MSI} (medium-scale integration). Contiene ente
+          diez y mil compuertas. \item \textbf{LSI} (large-scale integration). Contiene
+          miles de compuertas. \item \textbf{VLSI} (very large-scale integration).
+          Contiene cientos de miles de compuertas. \end{enumerate}
+
+\subsubsection*{2.8.2 Familias de l\'{o}gica digital} Los CI tambi\'{e}n se
+clasifican por su funcionamiento l\'{o}gico. El circuito b\'{a}sico en cada
+tecnolog\'{i}a es una compuerta NAND, NOR o inversor. Las familias de l\'{o}gica
+digital m\'{a}s populares son:
+
+\begin{itemize} \item \textbf{TTL} l\'{o}gica transistor-transistor. \item
+          \textbf{ECL} l\'{o}gica acoplada por emisor. \item \textbf{MOS}
+          metal-\'{o}xido-semiconductor. \item \textbf{CMOS} metal-\'{o}xido-semiconductor
+          complementario. \end{itemize}
+
+TTL ha estado en operaci\'{o}n por mucho tiempo y se le considera
+\textbf{est\'{a}ndar}. ECL resulta ventajoso en sistemas que deben operar a
+\textbf{alta velocidad}. MOS es apropiado para circuitos que requieren una
+\textbf{densidad elevadad de componentes} y CMOS es preferible en sistemas que
+requieren \textbf{bajo consumo de energ\'{i}a}. \textbf{CMOS} se ha convertido
+en la familia l\'{o}gica dominante, mientras que TTL y ECL ha deca\'{i}do.
+
+\subsubsection*{2.8.3 Dise\~{n}o asistido por computadora (CAD)} El dise\~{n}o
+de sistemas digitales con circuitos VLSI contienen millones de transistores. En
+general es imposible desarrollar y verificar sistemas tan complejos sin la ayuda
+de herramientas computarizadas. Estas herramientas (CAD) consisten en programas
+de software que ayudan a desarrollar hardware digital automatizando el proceso
+de dise\~{n}o. El dise\~{n}ador cuenta con diversas opciones para crear la
+implementaci\'{o}n f\'{i}sica de un circuito digital en silicio. Por ejemplo:
+
+\begin{itemize} \item (\textbf{ASIC}, application-specific integrated circuit):
+          circuito integrado para una aplicaci\'{o}n espec\'{i}fica. \item (\textbf{FPGA},
+          field-programmable gate array): arreglo de compuertas programable en campo.
+    \item (\textbf{PLD}, programmable logic device): un dispositivo de l\'{o}gica
+          programable. \end{itemize}
+
+Un adelanto importante en el dise\~{n}o de sistemas digitales es el uso de un
+lenguaje de descripci\'{o}n de hardware (HDL). Este representa diagramas de
+l\'{o}gica y otra informaci\'{o}n en forma textual. Sirve para simular un
+sistema antes de construirlo, a fin de verificar la funcionalidad y la
+operaci\'{o}n.
