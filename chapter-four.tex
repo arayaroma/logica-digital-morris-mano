@@ -1,15 +1,172 @@
 \newpage
 \section*{4. L\'{o}gica Combinacional}
-Los circuitos l\'{o}gicos para
-sistemas digitales pueden ser combinacionales o secuenciales. Un circuito
-combinacional consiste en compuertas l\'{o}gicas cuyas salidas en cualquier
-momento est\'{a}n determinadas por la combinaci\'{o}n actual de entradas. Por
-otra parte los circuitos secuenciales usan elementos de almacenamiento
-adem\'{a}s de compuertas l\'{o}gicas, y sus salidas son funci\'{o}n de las
-entradas y del estado de los elementos de almacenamiento. Esto a su vez es
-funci\'{o}n de entradas anteriores. Por ello las salidas de un circuito
-secuencial dependen no s\'{o}lo de los valores actuales de las entradas, sino
-tambi\'{e}n de las entradas anteriores, adem\'{a}s el comportamiento del
-circuito se debe especificar con una sucesi\'{o}n temporal de entradas y estados
-internos.
+Un circuito consiste en variables de entrada, compuertas l\'{o}gicas y
+variables de salida. Las $n$ variables de entrada provienen de una fuente externa,
+las $m$ variables de salidas van a un destino externo. Si se incluyen registros de
+almacenamiento entonces se considera un circuito secuencial.
+Con $n$ variables de entrada hay $2^n$ posibles combinaciones de entradas binarias.
+Para cada una hay un posible valor de salida. Por tanto es posible especificar una
+tabla de verdad con los valores de salida para cada combinaci\'{o}n de entradas.
 
+Se presentar\'{a} circuitos combinacionales est\'{a}ndar m\'{a}s importantes, como
+los sumadores, restadores, comparadores, decodificadores, codificadores, multiplexores,
+desmultiplexores.
+Estos componentes se fabrican como circuitos MSI (Medium Scale Integration) y tambi\'{e}n
+se usan como celdas est\'{a}ndar en circuitos VSLI complejos tanto como ASIC.
+
+\subsection*{4.1. Procedimiento de an\'{a}lisis}
+Se refiere a deducir la funci\'{o}n l\'{o}gica que realiza el circuito. Este proceso
+parte de un diagrama l\'{o}gico dado y culmina en conjunto de funciones booleanas, una
+tabla de verdad o una posible explicaci\'{o}n del funcionamiento del circuito.
+\medbreak
+
+\begin{itemize}
+    \item
+          El primer paso es asegurarse que el circuito sea combinacional y no secuencial. Lo cual
+          se puede asegurar si no hay elementos de almacenamiento o trayectorias de retroalimentaci\'{o}n.
+    \item
+          Una vez asegurado se procede a obtener las funciones booleanas de salida o la tabla de verdad.
+\end{itemize}
+
+\subsubsection*{4.1.1 Pasos para obtener las funciones booleanas de salida}
+\begin{enumerate}
+    \item Rotular con s\'{i}mbolos arbitrarios todas las salidas de compuerta que son
+          funci\'{o}n de variables de entrada. Determinar esto para cada salida de compuerta.
+    \item Rotular con s\'{i}mbolos arbitrarios las compuertas que son funci\'{o}n de
+          variables de entrada y de compuertas previamente rotuladas.
+    \item Repetir el paso 2 hasta obtener las salidas del circuito.
+    \item Obtener las funciones booleanas de salida en t\'{e}rminos de las variables de entrada.
+\end{enumerate}
+
+\subsubsection*{4.1.2 Deducci\'{o}n de la tabla de verdad}
+\begin{enumerate}
+    \item Determinar el n\'{u}mero de variables de entrada del circuito, paran $n$ entradas,
+          forme $2^n$ posibles combinaciones y bosqueje una lista de $0$ a $2^n - 1$.
+    \item Rotular las salidas de las compuertas selectas con s\'{i}mbolos arbitrarios.
+    \item Obtener la tabla de verdad para las salidas de las compuertas que son funci\'{o}n
+          \'{u}nicamente de las variables de entrada.
+    \item Obtener la tabla de verdad para las salidas de las compuertas que son funci\'{o}n
+          de valores previamente definidos.
+\end{enumerate}
+
+\subsection*{4.2. Procedimiento de dise\~{n}o}
+Parte de la especificaci\'{o}n del problema y culmina en un diagrama l\'{o}gico de circuitos
+o un conjunto de funciones booleanas a partir de las cuales se puede obtener un diagrama l\'{o}gico.
+
+\subsubsection*{4.2.1. Pasos para obtener el diagrama l\'{o}gico}
+\begin{enumerate}
+    \item Deducir el n\'{u}mero requerido de entradas y salidas; asignar s\'{i}mbolos a cada una.
+    \item Deducir la tabla de verdad que define la relaci\'{o}n  entre las entradas y las salidas.
+    \item Obtener las funciones booleanas simplificadas para cada salida en funci\'{o}n de las entradas.
+    \item Dibujar el diagrama l\'{o}gico y verificar que el dise\~{n}o sea correcto.
+\end{enumerate}
+
+La tabla de verdad de un circuito combinacional consta de columnas de entrada y columnas de salida.
+Las columnas de entrada se obtinen de los $2^n$ n\'{u}meros binarios para las $n$ variables de entrada.
+Los valores binarios de salida se deducen de las especificaciones planteadas. Tales especificaciones
+suelen ser incompletas, y cualquier interpretaci\'{o}n err\'{o}nea podr\'{i}a dar pie a una tabla de verdad
+incorrecta.
+
+Las funciones de salida se simplifican con cualquier m\'{e}todo disponible, as\'{i} como mapas de karnaugh,
+manipulaci\'{o}n algebraica, o un programa de computadora.
+
+\subsection*{4.3. Sumador-restador binario}
+Es un circuito combinacional que realiza operaciones aritm\'{e}ticas de suma y resta con n\'{u}meros
+binarios.
+\newpage
+
+\subsubsection*{4.3.1 Semisumador}
+Necesita dos entradas binarias y dos salidas binarias. Las variables de entrada designan los bits sumandos;
+las salidas, la suma y el acarreo. Las funciones booleanas simplificadas para las dos salidas se obtienen
+directamente de la tabla de verdad. Estas son:
+\begin{align*}
+    S & = x'y + xy' \rightarrow x \oplus y \\
+    C & = xy
+\end{align*}
+
+\begin{flushleft}
+    La tabla de verdad ser\'{i}a:
+\end{flushleft}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc|cc}
+        \toprule
+        $x$ & $y$ & $C$ & $S$ \\
+        \midrule
+        0   & 0   & 0   & 0   \\
+        0   & 1   & 0   & 1   \\
+        1   & 0   & 0   & 1   \\
+        1   & 1   & 1   & 0   \\
+        \bottomrule
+    \end{tabular}
+    \caption{Semisumador}
+\end{table}
+
+\subsubsection*{4.3.2 Sumador completo}
+Necesita tres entradas binarias y dos salidas binarias. Las variables de entrada designan los bits sumandos
+y el acarreo de entrada; las salidas, la suma y el acarreo de salida. Las funciones booleanas simplificadas
+para las dos salidas se obtienen directamente de la tabla de verdad. Estas son:
+\begin{align*}
+    S & = x'y'z + xyz' + xy'z' + xyz \rightarrow x \oplus y \oplus z \\
+    C & = xy + xz + yz
+\end{align*}
+
+\begin{flushleft}
+    La tabla de verdad ser\'{i}a:
+\end{flushleft}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|cc}
+        \toprule
+        $x$ & $y$ & $z$ & $C$ & $S$ \\
+        \midrule
+        0   & 0   & 0   & 0   & 0   \\
+        0   & 0   & 1   & 0   & 1   \\
+        0   & 1   & 0   & 0   & 1   \\
+        0   & 1   & 1   & 1   & 0   \\
+        1   & 0   & 0   & 0   & 1   \\
+        1   & 0   & 1   & 1   & 0   \\
+        1   & 1   & 0   & 1   & 0   \\
+        1   & 1   & 1   & 1   & 1   \\
+        \bottomrule
+    \end{tabular}
+    \caption{Sumador completo}
+\end{table}
+
+\newpage
+\subsubsection*{4.3.3 Sumador binario}
+Produce la suma aritm\'{e}tica de dos n\'{u}meros binarios. Es posible construirlo con 
+sumadores completos dispuestos en cascada, conectando el acarreo de salida de un sumador
+completo al acarreo de entrada del siguiente.
+
+\subsubsection*{4.3.4 Restador binario}
+La forma m\'{a}s conveniente de efectuar la resta de n\'{u}meros binarios sin signo es
+utilizando complementos. La resta de $A - B$ se efect\'{u}a obteniendo el complemento
+a dos de $B$ y sum\'{a}ndolo a $A$. El complemento a dos de un n\'{u}mero binario se
+obtiene calculando el complemento a uno y sum\'{a}ndole 1 al par de bits menos significativo.
+El complemento a uno se implementa con inversores y el 1 se suma a trav\'{e}s de un acarreo
+de entrada.
+
+Las operaciones de suma y resta se pueden combinar en un solo circuito que tiene un sumador
+binario compartido. Esto se realiza con la inclusi\'{o}n de una compuerta XOR con cada sumador
+completo. Agregando una entrada de control $M$ para decidir si se efect\'{u}a una suma o una
+resta, se obtiene un sumador-restador binario.
+
+\subsubsection*{4.3.5 Sumador decimal}
+Un sumador decimal requiere como m\'{i}nimo nueve entradas y cinco salidas, ya que se requieren
+cuatro bits para codificar cada d\'{i}gito decimal y el circuito necesita un acarreo de entrada y 
+uno de salida. Se puede implementar utilizando el c\'{o}digo BCD.
+
+\subsection*{4.4. Multiplicador binario}
+
+\subsection*{4.5 Comparador de magnitudes}
+
+\subsection*{4.6. Decodificadores}
+
+\subsection*{4.7. Codificadores}
+
+\subsection*{4.8. Multiplexores}
+
+\subsection*{4.9. Demultiplexores}
