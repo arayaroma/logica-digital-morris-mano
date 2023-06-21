@@ -137,7 +137,7 @@ para las dos salidas se obtienen directamente de la tabla de verdad. Estas son:
 
 \newpage
 \subsubsection*{4.3.3 Sumador binario}
-Produce la suma aritm\'{e}tica de dos n\'{u}meros binarios. Es posible construirlo con 
+Produce la suma aritm\'{e}tica de dos n\'{u}meros binarios. Es posible construirlo con
 sumadores completos dispuestos en cascada, conectando el acarreo de salida de un sumador
 completo al acarreo de entrada del siguiente.
 
@@ -156,14 +156,108 @@ resta, se obtiene un sumador-restador binario.
 
 \subsubsection*{4.3.5 Sumador decimal}
 Un sumador decimal requiere como m\'{i}nimo nueve entradas y cinco salidas, ya que se requieren
-cuatro bits para codificar cada d\'{i}gito decimal y el circuito necesita un acarreo de entrada y 
+cuatro bits para codificar cada d\'{i}gito decimal y el circuito necesita un acarreo de entrada y
 uno de salida. Se puede implementar utilizando el c\'{o}digo BCD.
 
 \subsection*{4.4. Multiplicador binario}
+La multiplicaci\'{o}n de n\'{u}meros binarios se efect\'{u}a igual que la de n\'{u}meros decimales.
+El multiplicando se multiplica por cada bit del multiplicador, comenzando por el menos significativo.
+Cada una de estas multiplicaciones forma un producto parcial. Los productos parciales se suman para
+obtener el producto final.
+\begin{flushleft}
+    Para construir un multiplicador se requiere:
+\end{flushleft}
+\begin{itemize}
+    \item Multiplicador de $J$ bits.
+    \item Multiplicando de $K$ bits.
+    \item $(J \times K)$ compuertas AND.
+    \item $(J - 1)$ sumadores de $K$ bits.
+\end{itemize}
+Se obtiene un producto de $(J + K)$ bits.
 
 \subsection*{4.5 Comparador de magnitudes}
+La comparaci\'{o}n de dos n\'{u}meros es una operaci\'{o}n que determina si un n\'{u}mero es mayor que,
+menor que o igual a otro n\'{u}mero. \textit{Un comparador de magnitudes} es un circuito combinacional
+que compara dos n\'{u}meros, $A$ y $B$, y determina sus magnitudes relativas. El resultado de la comparaci\'{o}n
+se especifica con tres variables binarias que indican si $A > B \vee A = B \vee A < B$.
+
+\begin{flushleft}
+    Si queremos comparar los siguientes dos n\'{u}meros binarios:
+\end{flushleft}
+\begin{center}
+    $A = A_3A_2A_1A_0$ \\
+    $B = B_3B_2B_1B_0$
+\end{center}
+\begin{flushleft}
+    Cada letra con sub\'{i}ndice representa uno de los d\'{i}gitos del n\'{u}mero. Los dos n\'{u}meros son
+    iguales si todos los pares de d\'{i}gitos significativos son iguales.
+\end{flushleft}
+\begin{center}
+    $A_3 = B_3$ \\
+    $A_2 = B_2$ \\
+    $A_1 = B_1$ \\
+    $A_0 = B_0$
+\end{center}
+\begin{flushleft}
+    Se puede implementar con una funci\'{o}n XNOR as\'{i}:
+\end{flushleft}
+\begin{center}
+    $x_i = A_iB_i + A_i'B_i'$ \quad para $i = 0, 1, 2, 3$
+\end{center}
+\begin{flushleft}
+    donde $x_i = 1$ \'{u}nicamente si los dos bits de la posici\'{o}n $i$ son iguales.
+    Para que exista la condici\'{o}n de igualdad, las $x_i$ deben ser todas 1. Lo que implica una
+    operaci\'{o}n AND de todas las variables.
+\end{flushleft}
+\begin{center}
+    $(A = B) = x_3x_2x_1x_0$
+\end{center}
+\begin{flushleft}
+    Para determinar si $A > B \vee A < B$, se inspeccionan las magnitudes relativas de pares de d\'{i}gitos
+    significativos, comenzando por el m\'{a}s significativo. Si los dos d\'{i}gitos son iguales, se comparar\'{a}
+    el siguiente par de d\'{i}gitos menos significativos; as\'{i} sucesivamente hasta encontrar un par de d\'{i}gitos
+    distinto.
+\end{flushleft}
+\begin{center}
+    Si $A = 1 \wedge B = 0$ \quad entonces \quad $A > B$, \\
+    Si $A = 0 \wedge B = 1$ \quad entonces \quad $A < B$
+\end{center}
+\begin{flushleft}
+    Esta comparaci\'{o}n sucesiva se expresa l\'{o}gicamente con las dos funciones booleanas:
+\end{flushleft}
+\begin{center}
+    $(A > B) = A_3B_3' + x_3A_2B_2' + x_3x_2A_1B_1' + x_3x_2x_1A_0B_0'$, \\
+    $(A < B) = A_3'B_3 + x_3A_2'B_2 + x_3x_2A_1'B_1 + x_3x_2x_1A_0'B_0$
+\end{center}
+\begin{flushleft}
+    Los s\'{i}mbolos $(A > B) \wedge (A < B)$ son variables binarias de salida que valen 1 cuando $A > B$ y $A < B$,
+    respectivamente.
+\end{flushleft}
 
 \subsection*{4.6. Decodificadores}
+En los sistemas digitales, las cantidades discretas de informaci\'{o}n se representan con c\'{o}digos binarios.
+Un c\'{o}digo binario de $n$ bits puede representar hasta $2^n$ cantidades distintas.
+\begin{center}
+    Un \textit{decodificador} es un circuito combinacional que convierte la informaci\'{o}n binaria de \textbf{$n$ l\'{i}neas
+    de entrada} a un m\'{a}ximo de \textbf{$2^n$ l\'{i}neas de salida.}
+\end{center}
+\begin{flushleft}
+    Aunque podr\'{i}a tener un n\'{u}mero menor de l\'{i}neas de salida, as\'{i}: \\
+    \begin{center}
+        $(dec): n$ a $m$ l\'{i}neas de salida, donde $\quad m \leq 2^n$
+    \end{center}
+\end{flushleft}
+
+Un decodificador podr\'{i}a operar con salidas complementadas o no complementadas. Podr\'{i}a tener
+una entrada de habilitaci\'{o}n que debe satisfacer una condici\'{o}n l\'{o}gica dada para habilitar
+el circuito. Un \textit{decodificador} con entrada de habilitaci\'{o}n puede funcionar como \textbf{desmultiplexor}.
+Un \textit{desmultiplexor} es un circuito que recibe informaci\'{o}n de una sola l\'{i}nea y la dirige a una
+de $2^n$ l\'{i}neas de salida.
+
+Dado que se obtienen operaciones de decodificador y desmultiplexor con el mismo circuito, decimos que un
+decodificador con entrada de habilitaci\'{o}n es un \textit{decodificador/desmultiplexor}.
+Es posible conectar los decodificadores con entradas de habilitaci\'{o}n unos con otros para formar un circuito
+decodificador m\'{a}s grande.
 
 \subsection*{4.7. Codificadores}
 
