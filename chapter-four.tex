@@ -260,7 +260,75 @@ Es posible conectar los decodificadores con entradas de habilitaci\'{o}n unos co
 decodificador m\'{a}s grande.
 
 \subsection*{4.7. Codificadores}
+Un codificador es un circuito digital que efect\'{u}a la operaci\'{o}n inversa de un decodificador. Un codificador
+tiene $2^n$ (o menos) l\'{i}neas de entrada y $n$ l\'{i}neas de salida. Estas \'{u}ltimas generan el valor c\'{o}digo
+binario correspondiente al valor de entrada. Un ejemplo es de octal a binario. Tiene ocho entradas, y tres salidas que
+generan el n\'{u}mero binario correspondiente. Se supone que s\'{o}lo una entrada es igual a 1 en cualquier momento dado.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccccccc|ccc}
+        \toprule
+        \multicolumn{8}{c}{Entradas} & \multicolumn{3}{c}{Salidas}                                                                   \\
+        \midrule
+        $D_0$                        & $D_1$                       & $D_2$ & $D_3$ & $D_4$ & $D_5$ & $D_6$ & $D_7$ & $x$ & $y$ & $z$ \\
+        \midrule
+        1                            & 0                           & 0     & 0     & 0     & 0     & 0     & 0     & 0   & 0   & 0   \\
+        0                            & 1                           & 0     & 0     & 0     & 0     & 0     & 0     & 0   & 0   & 1   \\
+        0                            & 0                           & 1     & 0     & 0     & 0     & 0     & 0     & 0   & 1   & 0   \\
+        0                            & 0                           & 0     & 1     & 0     & 0     & 0     & 0     & 0   & 1   & 1   \\
+        0                            & 0                           & 0     & 0     & 1     & 0     & 0     & 0     & 1   & 0   & 0   \\
+        0                            & 0                           & 0     & 0     & 0     & 1     & 0     & 0     & 1   & 0   & 1   \\
+        0                            & 0                           & 0     & 0     & 0     & 0     & 1     & 0     & 1   & 1   & 0   \\
+        0                            & 0                           & 0     & 0     & 0     & 0     & 0     & 1     & 1   & 1   & 1   \\
+        \bottomrule
+    \end{tabular}
+    \caption{Codificador octal a binario}
+\end{table}
+
+Se puede implementar con compuertas OR cuyas salidas se determinan directamente de la tabla de verdad.
+\begin{align*}
+    z & = D_1 + D_3 + D_5 + D_7 \\
+    y & = D_2 + D_3 + D_6 + D_7 \\
+    x & = D_4 + D_5 + D_6 + D_7
+\end{align*}
+
+\subsubsection*{4.7.1 Codificador con prioridad}
+Un codificador con prioridad es un circuito codificador que incluye una funci\'{o}n de prioridad. Funciona
+de tal manera que si dos o m\'{a}s entradas son 1 al mismo tiempo, la salida prioritaria tendr\'{a} precedencia.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc c ccc}
+        \toprule
+        \multicolumn{4}{c}{Entradas} &       & \multicolumn{3}{c}{Salidas}                              \\
+        \cmidrule{1-4} \cmidrule{6-8}
+        $D_0$                        & $D_1$ & $D_2$                       & $D_3$ &  & $x$ & $y$ & $V$ \\
+        \midrule
+        0                            & 0     & 0                           & 0     &  & X   & X   & 0   \\
+        1                            & 0     & 0                           & 0     &  & 0   & 0   & 1   \\
+        X                            & 1     & 0                           & 0     &  & 0   & 1   & 1   \\
+        X                            & X     & 1                           & 0     &  & 1   & 0   & 1   \\
+        X                            & X     & X                           & 1     &  & 1   & 1   & 1   \\
+        \bottomrule
+    \end{tabular}
+    \caption{Codificador con prioridad}
+\end{table}
+
+La salida V es un indicador de un bit v\'{a}lido  que adquiere el valor de 1 cuando una o m\'{a}s entradas son 1.
+Si todas las entradas son 0, la entrada no ser\'{a} v\'{a}lida y V ser\'{a} 0. En tal caso, las otras dos salidas
+no se inspeccionar\'{a}n y se especifican como condiciones de indiferencia.
+
+Cuanto m\'{a}s alto sea el sub\'{i}ndice de una entrada, mayor prioridad tendr\'{a} esa entrada. La entrada $D_3$
+es la de mayor prioridad, as\'{i} que si es 1, la salida $xy$ ser\'{a} 11, sin importar el valor de las demas entradas.
+
+Las expresiones booleanas simplificadas se obtienen por medio de mapas, la condici\'{o}n para la salida $V$ es una funci\'{o}n
+OR de todas las variables de entrada.
+\begin{align*}
+    x & = D_2 + D_3             \\
+    y & = D_3 + D_1D_2'         \\
+    V & = D_0 + D_1 + D_2 + D_3
+\end{align*}
 
 \subsection*{4.8. Multiplexores}
-
 \subsection*{4.9. Demultiplexores}
