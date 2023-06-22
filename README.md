@@ -2,8 +2,8 @@
 Apuntes sobre el libro de Logica Digital de Morris Mano, tercera edicion.
 
 ### Lectura
-Actualmente leyendo el capitulo 8: Nivel de transferencia de registros.
+Actualmente leyendo el capitulo 9: Logica Secuencial Asincronica.
 
 ### Escritura
-Actualmente escribiendo el capitulo 4: Circuitos Combinacionales: Multiplicador binario.
+Actualmente escribiendo el capitulo 4: Circuitos Combinacionales: Multiplexores y Desmultiplexores.
 
