@@ -1,2 +1,59 @@
 \newpage
 \section*{5. L\'{o}gica secuencial sincr\'{o}nica}
+\subsection*{5.1 Circutos secuenciales}
+En la pr\'{a}tica la mayor\'{i}a de circuitos ocupan elementos de almacenamiento, por lo
+que requieren que el sistema se describa en t\'{e}rminos de l\'{o}gica secuencial.
+Consiste en circuito combinacional al que se conectan elementos de almacenamiento para 
+formar una trayectoria de retroalimentaci\'{o}n. Estos elementos de almacenamiento son
+\textbf{capaces de guardar informaci\'{o}n binaria}. La informaci\'{o}n almacenada en 
+estos elementos en cualquier momento dado define el \textbf{estado} del circuito secuencial
+en ese momento. 
+
+El circuito secuencial recibe informaci\'{o}n binaria de entradas externas. \textbf{Estas entradas,
+junto con el estado actual de los elementos de almacenamiento, determinan el valor binario de
+las salidas.} Tambi\'{e}n determinan la condici\'{o}n para cambiar el estado de los elementos de
+almacenamiento.
+Las salidas de un circuito secuencial son funci\'{o}n no s\'{o}lo de las entradas, sino tambi\'{e}n
+del estado actual de los elementos de almacenamiento. El siguiente estado de los elementos de almacenamiento
+tambi\'{e}n es funci\'{o}n de entradas externas y del estado actual. As\'{i} un circuito secuencial
+se especifica con una \textbf{sucesi\'{o}n temporal de entradas, salidas y estados.}
+
+Existen dos tipos principales de circuitos secuenciales: \textbf{sincr\'{o}nicos} y \textbf{asincr\'{o}nicos}.
+
+\subsubsection*{5.1.1 Circuitos secuenciales asincr\'{o}nicos}
+El comportamiento de un circuito secuencial asincr\'{o}nico depende de las se\~{n}ales de entrada
+en cualquier instante dado y del orden que cambian las entradas.
+Los elementos de almacenamiento que suelen usarse son dispositivos de retardo de tiempo. La capacidad
+de almacenamiento de un dispositivo de retardo de tiempo se debe al tiempo que la se\~{n}al tarda en 
+propagarse por el dispositivo. En los sistemas asincr\'{o}nicos tipo compuerta, los elementos de almacenamiento
+consisten en compuertas l\'{o}gicas cuyo retardo de propagaci\'{o}n hace posible el almacenamiento requerido.
+As\'{i} un circuito secuencial asincr\'{o}nico podr\'{i}a considerarse como \textbf{un circuito combinacional
+con retroalimentaci\'{o}n.} Gracias a esta retroalimentaci\'{o}n el circuito secuencial asincr\'{o}nico podr\'{i}a
+volverse \textbf{inestable} ocasionalmente. Se estudiar\'{a} a mayor profundidad los circuitos secuenciales asincr\'{o}nicos
+en el cap\'{i}tulo 9.
+
+\subsubsection*{5.1.2 Circuitos secuenciales sincr\'{o}nicos}
+Un circuito secuencial sincr\'{o}nico es un sistema cuyo comportamiento se define conociendo sus se\~{n}ales
+en instantes discretos. La sincronizaci\'{o}n se logra con un dispositivo de temporizaci\'{o}n llamado \textbf{reloj}.
+El cu\'{a}l genera un tren peri\'{o}dico de \textit{pulsos de reloj}.
+
+\subsubsection*{5.1.3 Pulsos de reloj}
+
+Estos pulsos de reloj se distribuyen por todo el sistema de modo que los elementos de almacenamiento se vean afectados
+al llegar cada pulso. Casi nunca manifiestan problemas de estabilidad y es f\'{a}cil dividir su temporizaci\'{o}n
+en pasos discretos independientes.
+
+Los elementos de almacenamiento empleados en circutios secuenciales con reloj se llaman \textit{flip flops}.
+Un flip flop es un dispositivo capaz de almacenar un bit de informaci\'{o}n. Estos reciben sus entradas de un 
+circuito combinacional y tambi\'{e}n una se\~{n}al de reloj, cuyos pulsos se presentan a intervalos fijos de tiempo.
+El estado de un flip flop cambia s\'{o}lo cuando llega un pulso de reloj. Por tanto, la transici\'{o}n de un estado
+al siguiente se da \'{u}nicamente a intervalos de tiempo prestablecidos, dictados por los pulsos de reloj.
+
+\subsection*{5.2 Latches}
+\subsubsection*{5.2.1 Latch SR y Latch S'R'}
+\subsubsection*{5.2.3 Latch D}
+
+\subsection*{5.3 Flip-flops}
+\subsubsection*{5.3.1 Flip-flop D}
+\subsubsection*{5.3.2 Flip-flop JK}
+\subsubsection*{5.3.3 Flip-flop T}
