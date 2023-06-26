@@ -331,4 +331,179 @@ OR de todas las variables de entrada.
 \end{align*}
 
 \subsection*{4.8. Multiplexores}
+Un multiplexor es un circuito combinacional que selecciona informaci\'{o}n binaria de una de muchas l\'{i}neas
+de entrada y la env\'{i}a a una sola l\'{i}nea de salida. La selecci\'{o}n de la l\'{i}nea de entrada se controla
+con un conjunto de l\'{i}neas de selecci\'{o}n. Normalmente hay $2^n$ l\'{i}neas de entrada y $n$ l\'{i}neas de
+selecci\'{o}n cuyas combinaciones determinan cu\'{a}l entrada se selcciona. En diagramas de bloques es com\'{u}n
+rotular los multiplexores como \textit{MUX}.
+
+Los multiplexores se denominan como \textit{selectores de datos}, pues seleccionan una de varias entradas y dirigen
+la informaci\'{o}n binaria a la l\'{i}nea de salida.
+
+Las compuertas AND y los inversores del multiplexor semejan un circuito decodificador, de hecho, decodifican las l\'{i}neas
+de selecci\'{o}n de entrada. \textbf{En general un multiplexor de $2^n$ l\'{i}neas a 1 se construye a partir de un decodificador de
+$n$ l\'{i}neas a $2^n$ l\'{i}neas}, una para cada compuerta AND. Las salidas de las compuertas AND se conectan a una compuerta OR.
+
+El tama\~{n}o del multiplexor se especifica por el n\'{u}mero de l\'{i}neas de entrada de datos que tiene $(2^n)$ y la \'{u}nica l\'{i}nea
+de salida. El n\'{u}mero de l\'{i}neas de selecci\'{o}n de entrada es $n$. Podr\'{i}an tener una entrada de habilitaci\'{o}n que
+controla el funcionamiento de la unidad.
+
+\subsubsection*{4.8.1 Multiplexor de 2-1}
+
+El siguiente ejemplo muestra un multiplexor de 2-1 que tiene dos entradas de datos $D_0$ y $D_1$ y una entrada de selecci\'{o}n $S$.
+La entrada de selecci\'{o}n determina cu\'{a}l de las dos entradas de datos se env\'{i}a a la salida. Si $S = 0$, la entrada de datos $D_0$
+se env\'{i}a a la salida. Si $S = 1$, la entrada de datos $D_1$ se env\'{i}a a la salida.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|cc|c}
+        \toprule
+        $S$ & $D_0$ & $D_1$ & $O$ \\
+        \midrule
+        0   & 0     & 0     & 0   \\
+        0   & 0     & 1     & 0   \\
+        0   & 1     & 0     & 1   \\
+        0   & 1     & 1     & 1   \\
+        1   & 0     & 0     & 0   \\
+        1   & 0     & 1     & 1   \\
+        1   & 1     & 0     & 0   \\
+        1   & 1     & 1     & 1   \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de un multiplexor de 2-1}
+\end{table}
+
+\subsubsection*{Multiplexor de 2-1 simplificado}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c}
+        \toprule
+        $S$ & $O$   \\
+        \midrule
+        0   & $D_0$ \\
+        1   & $D_1$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de un multiplexor de 2-1}
+\end{table}
+
+\subsubsection*{4.8.2 Multiplexor de 4-1}
+El siguiente ejemplo muestra un multiplexor de 4-1 que tiene cuatro entradas de datos $D_0$, $D_1$, $D_2$ y $D_3$ y dos entradas de
+selecci\'{o}n $S_0$ y $S_1$. Las entradas de selecci\'{o}n determinan cu\'{a}l de las cuatro entradas de datos se env\'{i}a a la salida.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc|c}
+        \toprule
+        $S_0$ & $S_1$ & $O$   \\
+        \midrule
+        0     & 0     & $D_0$ \\
+        0     & 1     & $D_1$ \\
+        1     & 0     & $D_2$ \\
+        1     & 1     & $D_3$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de un multiplexor de 4-1}
+\end{table}
+
+\subsubsection*{4.8.3 Multiplexor de 8-1}
+El siguiente ejemplo muestra un multiplexor de 8-1 que tiene ocho entradas de datos $D_0$, $D_1$, $D_2$, $D_3$, $D_4$, $D_5$, $D_6$ y $D_7$
+y tres entradas de selecci\'{o}n $S_0$, $S_1$ y $S_2$. Las entradas de selecci\'{o}n determinan cu\'{a}l de las ocho entradas de datos se env\'{i}a a la salida.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|c}
+        \toprule
+        $S_0$ & $S_1$ & $S_2$ & $O$   \\
+        \midrule
+        0     & 0     & 0     & $D_0$ \\
+        0     & 0     & 1     & $D_1$ \\
+        0     & 1     & 0     & $D_2$ \\
+        0     & 1     & 1     & $D_3$ \\
+        1     & 0     & 0     & $D_4$ \\
+        1     & 0     & 1     & $D_5$ \\
+        1     & 1     & 0     & $D_6$ \\
+        1     & 1     & 1     & $D_7$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de un multiplexor de 8-1}
+\end{table}
+
 \subsection*{4.9. Desmultiplexores}
+Un desmultiplexor es un circuito combinacional que selecciona informaci\'{o}n binaria de una l\'{i}nea de entrada y la env\'{i}a
+a una de $2^n$ l\'{i}neas de salida. La selecci\'{o}n de la l\'{i}nea de salida se controla con un conjunto de l\'{i}neas de selecci\'{o}n.
+Se puede rotular a los desmultiplexores como \textit{DMUX}.
+El desmultiplexor solo funciona cuando la entrada de habilitaci\'{o}n es 1. Cuando es 0, todas las l\'{i}neas de salida son 0.
+
+Es utilizado cuando se requiere enviar informaci\'{o}n a varios dispositivos, es similar a un decodificador pero la diferencia es que
+el decodificador es usado para seleccionar una de $2^n$ l\'{i}neas de salida, mientras que el desmultiplexor se utiliza para enviar la
+informaci\'{o}n a una de $2^n$ l\'{i}neas de salida.
+Tambi\'{e}n es llamado como un \textit{distribuidor de datos}, pues distribuye la informaci\'{o}n binaria de una l\'{i}nea de entrada a una
+de varias l\'{i}neas de salida.
+
+\subsubsection*{4.9.1 Desmultiplexor de 1-2}
+En el siguiente ejemplo, muestra un desmultiplexor de 1-2 que tiene una entrada de datos $D$ y una entrada de selecci\'{o}n $S$.
+La entrada de selecci\'{o}n determina cu\'{a}l de las dos l\'{i}neas de salida, $O_0$ u $O_1$, se env\'{i}a a la salida.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cc|cc}
+        \toprule
+        $D$ & $S$ & $O_0$ & $O_1$ \\
+        \midrule
+        0   & 0   & 0     & 0     \\
+        0   & 1   & 0     & 0     \\
+        1   & 0   & 1     & 0     \\
+        1   & 1   & 0     & 1     \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de un desmultiplexor de 1-2}
+\end{table}
+
+\subsubsection*{4.9.2 Desmultiplexor de 1-4}
+En el siguiente ejemplo, muestra un desmultiplexor de 1-4 que tiene una entrada de datos $D_{in}$ y dos entradas de selecci\'{o}n $S_0$ y $S_1$.
+La entrada de datos se env\'{i}a a una de las cuatro l\'{i}neas de salida, $O_0$, $O_1$, $O_2$ o $O_3$, dependiendo del valor de las entradas de selecci\'{o}n.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|cccc}
+        \toprule
+        $S_0$ & $S_1$ & $D_{in}$ & $O_0$ & $O_1$ & $O_2$ & $O_3$ \\
+        \midrule
+        0     & 0     & 0        & 0     & 0     & 0     & 0     \\
+        0     & 0     & 1        & 1     & 0     & 0     & 0     \\
+        0     & 1     & 0        & 0     & 0     & 0     & 0     \\
+        0     & 1     & 1        & 0     & 1     & 0     & 0     \\
+        1     & 0     & 0        & 0     & 0     & 0     & 0     \\
+        1     & 0     & 1        & 0     & 0     & 1     & 0     \\
+        1     & 1     & 0        & 0     & 0     & 0     & 0     \\
+        1     & 1     & 1        & 0     & 0     & 0     & 1     \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de un desmultiplexor de 1-4}
+\end{table}
+\newpage
+
+\subsubsection*{4.9.3 Desmultiplexor de 1-8}
+En el siguiente ejemplo, muestra un desmultiplexor de 1-8 que tiene una entrada de datos $D_{in}$ y tres entradas de selecci\'{o}n $S_0$, $S_1$ y $S_2$.
+La entrada de datos se env\'{i}a a una de las ocho l\'{i}neas de salida, $O_0$, $O_1$, $O_2$, $O_3$, $O_4$, $O_5$, $O_6$ o $O_7$, dependiendo del valor de las entradas de selecci\'{o}n.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|cccccccc}
+        \toprule
+        $S_0$ & $S_1$ & $S_2$ & $O_0$    & $O_1$    & $O_2$    & $O_3$    & $O_4$    & $O_5$    & $O_6$    & $O_7$    \\
+        \midrule
+        0     & 0     & 0     & $D_{in}$ & 0        & 0        & 0        & 0        & 0        & 0        & 0        \\
+        0     & 0     & 1     & 0        & $D_{in}$ & 0        & 0        & 0        & 0        & 0        & 0        \\
+        0     & 1     & 0     & 0        & 0        & $D_{in}$ & 0        & 0        & 0        & 0        & 0        \\
+        0     & 1     & 1     & 0        & 0        & 0        & $D_{in}$ & 0        & 0        & 0        & 0        \\
+        1     & 0     & 0     & 0        & 0        & 0        & 0        & $D_{in}$ & 0        & 0        & 0        \\
+        1     & 0     & 1     & 0        & 0        & 0        & 0        & 0        & $D_{in}$ & 0        & 0        \\
+        1     & 1     & 0     & 0        & 0        & 0        & 0        & 0        & 0        & $D_{in}$ & 0        \\
+        1     & 1     & 1     & 0        & 0        & 0        & 0        & 0        & 0        & 0        & $D_{in}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tabla de verdad de un desmultiplexor de 1-8}
+\end{table}
